@@ -1,0 +1,107 @@
+mutation UpdatePreferences($languageCsv: String!, $topicsCsv: String!) {
+    response: updatePreferences(
+        languageCsv: $languageCsv
+        topicsCsv: $topicsCsv
+    ) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data
+    }
+}
+
+query GetUserShortDetailsByIdV2($userId: String) {
+    response: UserDetailsByIdV2(userId: $userId) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            ...UserShortDetails
+        }
+    }
+}
+
+query GetUserDetailsByIdV2($userId: String) {
+    response: UserDetailsByIdV2(userId: $userId) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            ...UserDetails
+        }
+    }
+}
+
+mutation UpdateUserProfile(
+    $profilePictureMediaId: String
+    $bio: String
+    $twitterHandle: String
+    $instagramHandle: String
+) {
+    response: updateUserProfile(
+        profilePictureMediaId: $profilePictureMediaId
+        bio: $bio
+        twitterHandle: $twitterHandle
+        instagramHandle: $instagramHandle
+    ) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data
+    }
+}
+
+query GetUserLanguageList($userId: String) {
+    response: UserDetailsByIdV2(userId: $userId) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            userId
+            languages
+        }
+    }
+}
+
+fragment UserShortDetails on UserProfileV2{
+    userId
+    username
+    profilePictureMediaId
+}
+fragment UserDetails on UserProfileV2{
+    userId
+    firstname
+    lastname
+    profilePictureMediaId
+    username
+    gender
+    deletionStatus
+    languages
+    phoneNumber
+    moderationStatus
+    verificationStatus
+    publicTags
+    profileLink
+    inviterUserId
+    createdAt
+    updatedAt
+    profile{
+        userId
+        bio
+        twitterHandle
+        instagramHandle
+        linkedinHandle
+        youtubeHandle
+        spotifyHandle
+        website
+        city
+        country
+        createdAt
+        updatedAt
+    }
+}

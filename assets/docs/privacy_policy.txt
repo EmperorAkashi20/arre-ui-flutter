@@ -1,0 +1,284 @@
+PRIVACY POLICY
+
+Last Updated on September 06, 2022
+
+1. GENERAL
+
+   1. The terms “Company”, “We”, “Us”, “Our” shall mean U Digital Content Private Limited, a company duly incorporated in India under the provisions of Companies Act, 2013, having its registered offices at Unit No. 702, 7th Floor, Notan Chambers, C.T.S No F/893, Turner Road, Bandra West, Mumbai City, Maharashtra, India - 400050 and its affiliates. We are committed to protect the privacy of and grant importance to the confidentiality of data of our Users (defined below).
+
+
+   2. U Digital Content Private Limited is the business of a) creating original content with professional creators through Arré for its own Platform arre.co.in[1], Arré’s social handles and for distribution to other Platform including creating premium original content in partnership with domestic and global OTT Platforms through its studio business, Arré Studio b) building a creator ecosystem ranging from professional to citizen creators through its tech-enabled audio social Platform, Arré Voice. 
+
+
+   3. This privacy policy (“Privacy Policy”) read with the Terms of Use available at our website www.arrevoice.com and our mobile application Arré Voice (collectively referred to as the “Platform”) applies to all information provided by users of the Platform, who in connection with the Platform may access or avail or host, publish, share, transact, view, display, download or upload any information (“User(s)”, “You” or “Your”). If any terms are not defined in this Privacy Policy, the meaning ascribed to such terms in the Terms and Conditions for the Platform will be deemed to apply to this Privacy Policy.
+
+
+   4. We respect the privacy of our Users and are committed to protect it. We believe it is important for You to understand what information we collect from You, how it is used and who will have access to that information. This Privacy Policy sets forth the policy in relation to the collection, usage, processing, storage, and disclosure of Information Collected (specified below) including but not limited to PI (defined hereinafter), SPDI (defined hereinafter) and User Data (defined hereinafter) that You may provide to us while accessing/using the Platform and our services rendered thereat, including the provision of audio interaction services (collectively “Services”). Our privacy practices may vary among the countries in which we operate to reflect local practices and legal requirements. To create a healthy environment on the Platform, We may record conversations and use the recordings to investigate non-compliance or violations of our Community Guidelines or Terms. 
+
+
+   5. We collect, use, share, disclose and protect the information / data provided by You while accessing the Platform and/or while using the Services available on the Platform as part of the Information Collected to enhance the operation of the Platform, allow You to use all its features and allow us to respond to Your requests/queries in an efficient manner, strictly in line with our business purposes. For any Services that the User may use, we collect information and data that is strictly necessary: (i) for the delivery of the Services; (ii) for the performance of a contract for which User is a party; (iii) for which User has given consent for such processing of data; or (iv) for compliance with a legal obligation to which we are subject.
+
+
+   6. Our Platform is designed to allow You and others to use Your voices to interact with each other in real time, and to share recordings of those interactions for others to listen online, on the Platform. 
+
+
+   7. Information Collected with respect to the User is collected by Us as: (i) information supplied by Users; (ii) information automatically tracked during Users navigation on the Platform; and/ or (iii) communicated directly to us via e-mail or telephone or another channel in the manner provided in this Privacy Policy.
+
+
+   8. By visiting or accessing the Platform, domain name and any other linked pages, features, content, or any other services we offer from time to time by in connection therewith, or by providing us with Information Collected, or by using the Services in any manner, You acknowledge that You are deemed to have read, understood and accepted the practices and policies outlined in this Privacy Policy, agreed to be bound by the Privacy Policy and hereby consent to our collection, use and sharing, disclosure of Your Information Collected as described in this Privacy Policy. You also warrant and represent that any registration information / other information that You submit or otherwise provide to us is true, accurate, and complete at all times. You further agree that such collection, use, storage, disclosure and/or transfer of Your Information Collected shall not cause any loss or harm to any other person. You acknowledge that anything done, caused to be done, whether expressly or impliedly in contravention of this Privacy Policy may render You liable for legal action. If You are not agreeable to this, please do not use this Platform and/or Services provided by us.
+
+
+   9. In light of the above, You acknowledge that this Privacy Policy, Terms, and such other policies as may be framed by us from time to time (as made available at our Platform), forms our collective agreement (“Agreement”) with You in relation to Your use of the Platform. Any capitalized term used but not defined in this Privacy Policy shall have the meaning attributed to it in our Terms of Use. In the event this Privacy Policy conflicts with the Agreement or any other agreement between You and the Us, the Terms will prevail over the terms of the Privacy Policy.
+
+
+   10. For the purpose of this Privacy Policy, we refer to any individual, group of individuals with whom we have a contractual relationship, including merchants, advertisers, deal partners, brands, businesses, etc. as “Business Partners”; to any individual, group of individuals whose services are used by us in order to provide our intended Services (defined hereinafter) to You through our Platform as “Service Providers” and to our associate, subsidiary, affiliate and/or group companies as “Entities”.
+
+
+   11. Further, we refer to information through which a User is capable of being identified, directly or indirectly in combination with other information available or likely to be available with us, in particular by reference to User, their name, email address, phone number, Internet Protocol (“IP”) address as well as any information associated with the foregoing as Personal Information (“PI”) as defined under the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Information) Rules, 2011 (“Rules, 2011”). “Personal Information" means any information that relates to a natural person, which, either directly or indirectly, in combination with other information available or likely to be available with a body corporate, is capable of identifying such person. PI does not include anonymized information that has been appropriately processed to make it non-identifiable in order to irreversibly prevent its identification.
+ 
+   12. Our Services are not addressed towards anyone under 18 (Eighteen) of age (“Children”). We do not knowingly seek any information including PI or SPDI from Children. If You are a parent or guardian and You are aware that Your Children have provided us with such information, please contact us in the manner provided in this Privacy Policy. If we become aware that we may have collected PI or SPDI from Children without verification of consent from parent or guardian, we will take steps to remove that information from our servers and/ or to deactivate the relevant account as soon as reasonably practicable.
+
+
+   13. This Privacy Policy is applicable to information provided by Users while using the Platform, and not to information made available to us from other sources. In the event we obtain information pertaining to our Users from websites, applications, landing pages, third parties, etc. that may be accessed by Users through the Platform or otherwise, such information will be subject to the privacy and other policies and terms of the said websites, applications, landing pages, etc. The Privacy Policy shall not apply to websites, applications, landing pages, etc. or any third-party services accessed by You through the Platform including in case said websites, applications, landing pages, etc. and/or third-party services are advertised on the Platform.
+
+2. PROCESSING OF INFORMATION
+
+   1. We are based in India with Business Partners that are situated and operate in countries other than India. Users will be from all over the world. We may transfer Your PI to countries which may not have the same data protection laws as Your home country or territory, but We will protect Your PI in accordance with this Privacy Policy, or as otherwise disclosed to You. We will use standard contractual clauses to ensure that Your personal information is protected.
+
+
+   2. In case You have any concerns in the processing of Your personal data and or wish to exercise Your right to opt out of proving any such data, please refer to Section 7 (Management of Your Information) of this Privacy Policy.
+
+3. INFORMATION COLLECTED
+
+   In the course of providing Services to You through the Platform, we may collect the following information (collectively “Information Collected”):
+
+   1. Log - In Data:  For the purposes of creating a User account, You must provide Us with some information so that We can provide Our Services to You.  We collect Information that personally identifies the User which includes categories of information viz. contact data (such as email address, phone number, gender, etc.); demographic data (such as region preferences, language, time zone, postal address, and location details) when You register on the Platform (collectively “Log-in Data”). For the purposes of creating a User account, You must provide Us with some information so that We can provide Our Services to You. We also ask Users to provide us with information of their preferences (such as content/category preference, areas of interest). This type of information is required by us in order to provide Services through the Platform. Your profile information, which includes Your username, is always public. Information is also collected of the URL of the websites You visit from, and You go to when You visit/leave our Services and/or Platform is available to us through Your use of our Services and/or Platform.
+It is clarified that PI collected from You by the Platform may constitute PI categorized as Sensitive Personal Data or Information (“SPDI”) as defined under the Rules, 2011. Under the Rules, 2011, SPDI includes and relates to the following:
+
+      1. passwords; 
+      2. financial information such as bank accounts, credit and debit card details or other payment instrument details;
+      3. physical, physiological, and mental health condition;
+      4. sexual orientation;
+      5. medical records and history;
+      6. biometric information;
+      7. any information related to the aforementioned provided to us and/or Arré Voice Entities for providing the Services received by us; and/or 
+      8. any information related to the aforementioned received by us for processing, stored or processed under lawful contract or otherwise: 
+
+	It is further clarified that any such information, if furnished under the Right to Information Act, 2005 or any other law for the time being in force shall not constitute SPDI. The Platform will be free to use, collect and disclose information that is freely available in the public domain or furnished to us without Your consent. All such Information Collected is stored or used for processing Services and under no circumstance are any of these details made available in the public domain, subject to any disclosure(s) made in accordance with this Privacy Policy. However, we may use this Information Collected to share with You additional and/or upcoming information regarding the Services offered by us on the Platform.
+        
+   2. Additional Information: We collect PI (as defined herein) that You provide to Us. We may also collect additional information that will be publicly visible in our Platform, such as a profile picture, a bio in Your profile to tell other Users more about You, and topics You are interested in alongside the Log-in Data. You may also choose to connect Your other social media accounts, and sync Your contacts.
+
+Information about Your activity on the Platform, such as information about Your account usage, as well as information about how You interact with the Platform, Your content preferences and consumption, interaction with other Users, other User activity (collectively, “User Data”). User Data may be combined with other information, including PI we have collected about You. We keep Your profile information and content of Your profile for the duration of Your account.
+
+
+   3. Content You Share: This comprises all of the information You make available to other users via Platform, comprising such as:        
+
+
+   * Information about Your activity on the Platform is collected and stored by Us. This includes any audio-visual content You post (including the date, application, and version of the Platform), including Your lists, podrolls, and communities that You are a part of. This also includes Your interactions with other Users’ content, such as likes, reposting, shares, replies, launches and if other Users mention or tag You in content or if You mention or tag the other Users. Further, this includes how You interact with Users on the Platform, such as Users You follow and Users who follow You, and when You use Direct Messages, including the contents of the messages, the recipients, and date and time of such messages and any other posts that You re-post and the Location Data and the Log Data associated with the post.
+
+   * Information that the User chooses to share through our Services and/or Platform including PI and SPDI (as defined herein) such as profile information, etc. For instance, when You get registered on our Platform, You can share with us additional information, such as details of Your photos, Your personality, lifestyle, interests, and other details about You. By choosing to provide this information, You consent to our processing of that information.
+
+   * We collect information through our access to the media gallery on Your device including without limitation, camera access, microphone access, photo, video files or audio files on Your phone with Your prior permission. We shall always obtain Your consent before accessing Your media and You shall have the option to deny Us such access.
+
+
+   4. Location Information: “Location Information” is information that is derived from Your GPS, IP address, and/or public posts that contain location information. This also includes information about You (including Location Information and Log Data) that other users of the Platform share about You or any communications they make to You. When You access the Platform, as we derive location information from Your IP address, device, or internet service to prevent multiple or fraudulent log-ins to Your account.
+
+
+   5. Log Data: Information about “Log Data" is information that we automatically collect when You use the Platform, even if You have not created an account or are signed out, whether through the use of cookies, web beacons, log files, scripts. This information is collected for the effective functioning of the Platform. This is including but not limited to:
+
+
+   	* Information from and about the devices You use. In particular, We may collect information about Your mobile carrier, access times, pages visited, device information (including device and application IDs), ads shown to You on the Platform, location, hardware and software, such as the hardware model, operating system version, device memory, unique application identifiers, apps installed, unique device identifiers, browser type, and information about Your wireless and mobile network connections, such as mobile phone number, service provider, IP address, and signal strength;
+
+   	* Information about what You have searched for and looked at while using the Platform, such as web search terms used, social media profiles visited, and details of other information and content accessed or requested by You while using the Platform;
+
+  	* General information about communications on the Platform, such as the identity of a user that You have communicated with and the time, data, and duration of Your communications; and metadata, which means information related to items You have made available through the Platform, such as the date, time, or location that a shared photograph or video was taken or posted.
+
+   	* We also receive log information when You click on, view, or interact with links on Our services, including when You install another application through the Platform.
+
+
+   6. Cookies: Our Platform uses cookies to distinguish You from other users of our Platform. This helps us to provide You with a good user experience when You browse our Platform and also allows us to improve the Platform. We collect the cookie data from the cookies on Your device. Information obtained through tracking software including use of Cookies on the Platform.
+
+
+   7. User Search Data: Any searches You make on the Platform is collected by Us. This information is stored for a period of 180 days. 
+
+
+   8. Additional Account Security: We collect Your phone number and request access to the SMSes on Your phone by sending You a One-Time-Password ("OTP"), which You confirm by entering the OTP to confirm Your identity, while registering with our Platform. While registering with the Platform, we also have a face verification mechanism to verify the identity of the User.
+
+
+   9. Direct Messages: We collect information about the contents of any communication between You and another User, when You use any chat feature on the Platform.  We store messages You send and receive from other Users and information about those messages or other messaging features on the Platform. This information is collected to review the contents of the information if a user reports, or we otherwise detect a potential breach of trust, safety violation, or violation of our Terms of Service or Community Guidelines or potential illegal or illicit activity
+
+
+   11. Contacts List: We collect Information of the contact list on Your mobile device is collected with Your permission. We ask for Your consent before accessing Your contact list and You have the option to deny us the access to Your contact list. If You give Us permission to sync Your contacts, We will store the name and the contact number in our database. We do not collect email addresses, or any other information associated with Your contacts.
+
+
+   12. Customer Support Communication: We collect Information provided in any communications between You and the Platform, and related information such as contact details. If the User communicates with us, for example, via e-mail, registers with Us, any information provided in such communication may be collected by us. Any information that You provide to our customer support team regarding any assistance or support that You may require for using our Platform from time to time.
+
+
+   13. Device Data: "Including but not limited to"         
+
+       Device attributes: Information about Your device(s), as may be automatically collected with Your permission when You access or register on the Platform. For example, when You utilize our Platform, we may collect Your IP address, type of device viz. mobile device/computer/laptop, etc. Your use, specifications of device hardware / software and Your geographic location. The current and past location of the device used to access our Platform is collected and stored by us with Your permission. You have full control over whether to allow or not allow Us to collect this information by making changes to Your device settings. However, if We are unable to access Your location information, the Platform may become inaccessible or not function as intended. 
+
+       Device operations: information about operations and behaviours performed on the device, such as whether a window is foregrounded or backgrounded.        
+
+       Device signals: We may collect Your Bluetooth signals, and information about nearby Wi-Fi access points, beacons, and cell towers        
+
+       Data from device settings: information You allow us to receive through device settings You turn on, such as access to Your GPS location, camera or photos.        
+
+       Network and connections: information such as the name of Your mobile operator or ISP, language, time zone, mobile phone number, IP address and connection speed.        
+
+       Media: We collect information through Our access to the media gallery on Your device including without limitation, camera access, images, microphone access, photo, video files and audio files on Your phone with Your prior permission. We shall always obtain Your consent before accessing Your media and You shall have the option to deny Us such access.   
+
+      14. Service & Crashes: 
+
+      * Information for service-related, diagnostic, and performance purposes in relation to provision of Services, including information about Your log files, performance logs, crash information, reports.
+
+      * We may share questions or feedback, including feedback about interacting with other Users.
+
+4. USE OF INFORMATION
+
+	We (and third-party data processors, vendors and hosting partners who may be acting on our behalf including Service Providers, Business Partners, and related Entities) may collect, store and process Information Collected for reasons including in particular:
+
+      * To set up and facilitate log-in to a user account on the Platform;
+
+      * The audio files, photo, or video files is collected to facilitate the sharing of any media such as audios, videos and images using the Platform for the purpose of content creation, to customise our Platform to suit Your mobile device, to optimise Your user experience on Our Platform, and to improve the Platform.
+
+      * To notify You about changes to the Platform, including this Privacy Policy;
+
+      * Used for security and operation of our Platform including for internal analytics and reporting 
+purposes;
+
+      * To facilitate communication, including provision of user support;
+
+      * To enforce our terms, conditions, and policies and any of our rights, or the rights of our affiliate companies, or other users of the Platform;
+
+      * to analyse and understand how our Users, both on an aggregated and individualized basis, use the Platform and to help us operate, provide, improve, understand, customize, support, and market the Platform and Services and services / products of our Entities;
+
+      * to contact You from time to time including for updates, news related to the Platform, periodic marketing emails, newsletters and exclusive promotions offering special deals, etc.;
+
+      * to allow our customer service to contact You, if necessary; to provide customer support, and to improve, fix, and customize the Platform by using the said information;
+
+      * to allow third parties to contact You in relation to Services availed/requested by You on our Platform (for the purposes defined in this Privacy Policy) or through third party links;
+
+      * to customize the content of our Platform including display of content based on interest, location, offers, etc. and/or displaying or providing access to promotions, advertisements, offer, etc. which may be based on Your interests and also ad-targeting, ad-placement, and ad-measurement and/or displaying location specific news and weather-related information and/or improving search results, content loading, performance, etc.
+
+      * to request reviews of our Platform and/or Services or any improvements thereto;
+
+      * in interest of safety and security and to ensure Platform is being used in compliance with the law, including to send verification message(s) or email(s); to validate/authenticate Your account and to prevent any misuse or abuse, including to resolve grievances or disputes; 
+
+      * to help diagnose problems and troubleshoot problems in connection with the Platform and to administer our Platform, including for data processing, statistical or risk analysis, risk management;
+
+      * to enforce the Terms that govern the Platform;
+
+      * to identify You and to gather broad demographic information;
+
+      * in case of any major event such as merger, acquisition, sale, or transfer of assets in case of any force majeure event to any other Entities or third parties;
+
+      * for our internal record keeping requirements including audit, collection of aggregate statistics or anonymized details about visitors to our Platform;
+
+      * as otherwise described to You at the time of collection or set out in this Privacy Policy;
+
+      * We may use information including Your PI (including SPDI) as shared and allowed to be stored by You and as available in or linked with Your account in connection with the Platform for the purpose of the Services;
+
+      * To improve the Platform;
+
+      * To investigate your support issue and provide support for your diagnostic issue;
+
+      * To verify Your identity so as to enforce our terms, conditions, and policies.
+
+      1. Research: Further, in an ongoing effort to better understand and serve the users of Our Services, we also often conduct research on its customer demographics, interests, and behaviour based on the PI, SPDI and other information provided to us. This research may be compiled and analyzed on an aggregate basis, and we may share this aggregate data with our affiliates, agents, advertisers including Business Partners, Service Providers and Entities. This aggregate information does not identify You personally. We may also disclose aggregated User statistics in order to describe our Services to current and prospective business partners and to other third parties for other lawful purposes (including providing advertising use cases to actual or potential advertisers).
+
+      2. Business Partners & Service Providers: -We do not authorize any party including Service Providers / Business Partners to use Your information for any other purpose(s) except as may be for fulfilling their role with respect to the Services or as mentioned in this Privacy Policy. The User understands and accepts that the said parties use such information is beyond Our purview and control, as they process such information as independent data controllers, hence We cannot be made accountable for their acts. You are advised to review the privacy policies of the Service Providers / Business Partners whose services You choose to avail.
+
+      3. User Search Data Collection: To provide You quick access to Your previous searches. To use analytics for the purposes of personalization of the Platform. We collect information to customize Your experience on the Platform including by showing You more relevant content, suggesting people and topics to follow, enabling, and helping You discover affiliates, third-party apps, and services.
+
+      4. Verification & Security: The collection of “Additional Security Information” is collected to verify Your identity and for maintaining Your account security.
+
+      5. Reviewing & Monitoring: - We collect the “Direct Messages” and “Audioroom Data” to review the contents of the information if a user reports, or we otherwise detect a potential breach of trust, safety violation, or violation of our Terms of Service or Community Guidelines or potential illegal or illicit activity. If a User reports or our automated systems flags potential violations, We will retain the recording as long as reasonably necessary to investigate the potential violation. Otherwise, We store it in Our servers for a period of 180 days.
+
+      6. Use of Contact List: We collect “Contacts List” for the purpose of inviting Your network to the Platform and to connect with Your contacts who are already registered on the Platform. We ask for Your consent before accessing Your contact list and You have the option to deny us the access to Your contact list. 
+
+5. INFORMATION DISCLOSURE
+
+	While making use of our Platform, You authorize us to share and disclose Information Collected in various ways including in the manner described below.
+
+      1. We share Information Collected to our Business Partners / Service Providers / Entities and relevant third parties for the use and purpose(s) defined under this Privacy Policy including;
+
+      	1. PI (and SPDI) to Business Partners or Service Providers in the course of business in relation to the Platform and/or the Services; 
+
+      	2. PI and User Data to Service Providers that we work with for services not limited to communication, marketing, data and information storage, transmission, security, analytics, fraud detection, risk assessment;
+
+      	3. PI with Entities or agencies appointed by Entities for internal investigation purposes within or outside India and other jurisdictions or in interests of improving personalization and service efficiency; under controlled and secure circumstances.
+
+      2. We share information that You choose to post or provide on the Platform with other Users of Platform subject to personal settings of Your account. If certain information of Your profile is public, such information will be visible and may be accessed by non-users or third parties outside the Platform, in addition to Users of Platform;
+
+      3. We share SPDI to our Service Providers, Business Partners, Entities and other third parties subject to Your consent, that is, only if You choose to avail any such services and/or initiate any transactions offered by said parties requiring such information, or otherwise choose to provide the same. For instance, the said parties may contact the Users to offer certain products or services or to offer certain benefits specially made for our Users. Examples of such partners are entities offering co-branded credit cards, banking cards, Users posting gigs, etc. Any services so availed will be governed by the privacy measures taken by the respective party providing such service. 
+
+      4. If assets of the Company are acquired, Information Collected may also be transferred to the acquirer depending upon nature of such acquisition. We may disclose Information Collected as part of any merger, sale of our assets, acquisition; in the event of insolvency, bankruptcy or receivership, causing us to transfer our business assets; business expansion/development/restructuring; if we decide to sell/transfer/assign our business (or any part thereof and any of our Entities); etc.                        
+
+      5. We share non-identifiable PI of Users in aggregate or anonymized form to build higher quality and useful online services on the Platform and may provide anonymous statistical information based on this data to current and potential Business Partners/ Service Providers/ Entities and to inform these third parties as to the number of people who have seen and clicked on links to their websites. Any PI which we collect and which we may use in an aggregated format is our property. We may use it, in our sole discretion and without any compensation to You, for any lawful and legitimate purpose. 
+
+      6. Our Platform may contain links to third party websites or applications. The User agrees and understands that privacy policies of such applications or websites are not under our control and the User understands that on leaving our servers, use of any information provided by the User shall be governed by the privacy policy of operator(s) of the website used by them.
+
+      7. We may transmit Information Collected to data servers, to ensure the security of data storage collected by Us. Accordingly, the User is also subject to the terms of data server’s policies. 
+
+      8. We share and disclose Information Collected if required to do so under a legal obligation, as is reasonably necessary to respond to judicial or government orders or other legal process and for security and safety reasons such as verification of identity, or for prevention, detection, investigation including fraud, cyber incidents, prosecution, and punishment of offences in compliance with Section 9 (Law and Compliance) of this Privacy Policy. In relation to the same, We may disclose said information to law enforcement or government agencies, third party rights owners, or others in good faith belief that such disclosure is reasonably necessary to: investigate, remedy, and enforce our Agreement; respond to claims/ grievances violates the rights of a third party; or protect the rights, property or personal safety of our Users or the general public. Such transfer or disclosure shall be for lawful purposes only. Further, such transfer or disclosure of Your SPDI to other third parties shall only be done once it is ensured that the third party receiving such information has implemented the same level of security practices as have been implemented by Us.
+
+      9. We may send You direct marketing communications as permitted by law, including, but not limited to, notifying You of feature releases and special events. You may opt out of our in-app/push marketing communications through Your phone settings or the notification settings provided within the Platform. Please note that we may periodically send You service emails even after You opt out of direct marketing.
+
+      10. We may create and use de-identified information for our business purposes, including to analyze the effectiveness of our Platform, to improve and add features to our Platform, and to analyze the general behavior and characteristics of users of our Platform.
+
+      11. We use third party analytics services to automatically log certain information about Your mobile device and how You interact with the Platform. The information collected is used to troubleshoot and prevent errors, perform data analysis, and develop new features.
+
+6. RETENTION, STORAGE AND SECURITY OF INFORMATION
+
+      1. The Company will retain Information Collected on its servers for as long as is reasonably necessary for the purposes listed in this Privacy Policy. Where Information Collected is no longer required, we will ensure it is either securely deleted or stored in a way which ensures that it will no longer be used by the Company. In some circumstances we may retain such information or additional information and/ or any content for longer periods of time, for instance where we are required to do so in accordance with any legal, regulatory, tax or accounting requirements.
+
+      2. We provide You with the ability to access, rectify, and delete Your data. We store data as long as it is necessary for the purposes listed in this Privacy Policy, or Your account is deleted – whichever comes first. This is a case-by-case determination that depends on things such as the nature of the data, why it is collected and processed, and relevant legal or operational retention needs. For example, when You search for something on the Platform, the log of that search is deleted after 180 days. When You delete Your account, we delete things that You have posted, such as Your photos and any audio-visual content and audio files and/or video files and/or any other content posted by You, and You will not be able to recover this information later. Information that others have shared about You is not part of Your account and will not be deleted.
+
+      3. Where You violate our Terms and Your account is suspended, We may keep the identifiers You used to create the account (i.e., email address or phone number) indefinitely to prevent repeat policy offenders from creating new accounts. We may keep certain information longer than Our policies specify in order to comply with legal requirements and for safety and security reasons. 
+
+      4. The security of Your information is important to us. The database is stored on servers secured behind a firewall; access to the servers is password-protected and is strictly limited. The Information Collected is stored in electronic form but may also be converted to physical form from time to time, if deemed necessary. We take necessary precautions to protect Your PI and SPDI both online and off-line and implement reasonable security practices and measures that are commensurate with respect to the information being collected and the nature of our business. We follow generally accepted legal and industry standards to protect PI and SPDI submitted to us in accordance with the Rules, 2011.
+
+      5. Although we make best possible efforts to store User’s PI or SPDI in a secure operating environment that is not open to the public, the User understands that there is no such thing as complete security, and we cannot guarantee safety or security of Your information as events beyond our control can also occur, both during transmission of Your information and once we receive it. We do not guarantee that there will be no unintended disclosures of Your information. If we become aware that Your information has been disclosed in a manner not in accordance with this Privacy Policy, we will use reasonable efforts to notify such User of the nature and extent of such disclosure as soon as reasonably possible and as permitted by law.
+
+      6. We encourage the User to follow certain security measures on their part, including: if using a computer in a public location, to always log out and close the website browser when You complete Your online session; keep Your account details and passwords private; frequently change Your password; avoid using the same password for multiple online accounts.
+
+7. MANAGEMENT OF YOUR INFORMATION
+
+      1. You may manage, change, limit, or delete Your information, including certain information available to other Users by using the settings feature available on the Platform. You may also review Your PI (including any SPDI) shared by You by logging into Our Platform using Your secure login credentials and may notify us in case of any change by contacting us in the manner provided below.
+
+
+      2. Withdrawal of Your Consent and Permission: You may withdraw Your consent to submit any or all PI (including SPDI) or decline to provide any permissions on the Platform as covered above at any time. In case You choose to do so, Your access to the Platform may be limited, or we might not be able to provide the Services to You. You may withdraw Your consent by sending an email to myinfo@arre.co.in. In accordance with the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 (“Rules, 2021”), we shall retain Your information for a period of at least 180 (hundred and eighty days) days or a longer period if required by the court or authorized government agencies after withdrawal or cancellation of Your registration.
+
+
+      3. Opt Out: To the extent we use Your PI (including SPDI) to market to You, we will provide You the ability to opt-out of such uses. You may opt-out of receiving non-essential communications, including of a promotional or marketing-related nature, from us on behalf of our Service Providers and Business Partners, and from us in general, after setting up an account. You may also opt out from our use of data from Cookies and similar technologies that track Your behaviour on the sites of others for ad targeting and other ad-related purposes. Further, You may also opt-out of our use of tools such as Global Positioning System (“GPS”) to identify Your precise location. You may opt out of providing such information at the time when we ask for Your consent to obtain the same, when first creating account on the Platform or later by indicating or modifying Your choice in account settings, by directly clicking on the unsubscribe link where available. In addition, a User will always have the right to withdraw his or her consent at any time, by contacting us at the email address - myinfo@arre.co.in 
+
+8. CHANGES TO PRIVACY POLICY
+
+      1. Company may update this Privacy Policy at any time, with or without advance notice. In the event there are significant changes in the way Company treats User’s information, or in the Privacy Policy itself, Company will display a notice on the Platform, so that You may review the changed terms prior to continuing to use the Services.
+
+      2. If You object to any of the changes to our Privacy Policy, and You no longer wish to avail the Services, You may contact us at email address or address provided hereinbelow to deactivate Your account and for any other issues related to this Privacy Policy. Unless stated otherwise, Company’s current Privacy Policy applies to all information that Company has about You and Your account.
+
+      3. If a User uses the Platform, after we publish notice of changes / update to this Privacy Policy on the Platform, such User hereby consents to the changed terms.
+
+9.   LAW AND COMPLIANCE
+
+      1. This Privacy Policy is an electronic record in the form of an electronic contract formed under the Information Technology Act, 2000 (“IT Act”) and the rules made thereunder and the amended provisions pertaining to electronic documents/ records in various statutes as amended by the IT Act from time to time. This Privacy Policy does not require any physical, electronic, or digital signature and is a legally binding document between the User and the Company. This document is published in accordance with the relevant provisions of the Rules, 2021 which mandates an intermediary to publish rules and regulations, privacy policy and the user agreement for access of its computer resource by any person on its website, mobile based application, or both and in accordance with the provisions of the Rules, 2011 that require publishing of the privacy policy for collection, use, storage, transfer/ disclose of SPDI. 
+
+      2. We may collect, use, preserve, and share Information Collected as may be reasonably necessary to:
+
+      	1. respond, pursuant to applicable law or regulations, to legal process, or to judicial or government order or requests or comply with any valid legal process, governmental request, or applicable law, rule, or regulation;
+
+      	2. investigate, remedy, potential violations of this Privacy Policy, in relation to the Agreement, and for enforcement of the same;
+
+      	3. to protect the rights, property, or safety of us, our Users, or others;
+
+      	4. to detect and resolve any fraud or security concerns or technical issues, etc.; and
+
+      	5. for other legal requirements.
+
+10. FEEDBACK AND GRIEVANCES
+
+      1. For more information about Our Privacy Policy, or if You have questions, concerns or comments, provide feedback or if You would like to lodge a grievance/make a complaint, please contact Our grievance officer, Ms. Archana Karulkar by e-mail at feedbackvoice@arre.co.in
+
+      2. We will use reasonable efforts to respond promptly to any requests, questions or concerns, which You may have regarding Our use of Your Personal Information.

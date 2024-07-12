@@ -1,0 +1,76 @@
+type InvitedUser {
+  inviterUserId: String
+  inviteeUserId: String
+  inviteLinkUsed: String
+  createdOn: String
+}
+
+type InvitedUserResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: [InvitedUser]
+}
+
+type UserInvite {
+  userId: String
+  uniqueInviteLink: String
+  uniqueDeepLink: String
+  numberOfPeopleInvited: String
+  numberOfInvitesLeft: String
+  isInviteRequested: Boolean
+}
+
+type UserInviteResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: UserInvite
+}
+
+type genericResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: String
+}
+
+type getInviteRequestsListResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: [inviteRequest]
+}
+
+type inviteRequest {
+  userId: String
+  requestedOn: String
+}
+
+type Mutation {
+  requestMoreInvites: genericResponse
+}
+
+type Query {
+  UserInvite(
+    """
+    The id of the user
+    """
+    userId: String
+  ): UserInviteResponse
+  InvitedUsers(
+    """
+    The id of the user
+    """
+    userId: String
+
+    """
+    The createdOn timestamp of last entry
+    """
+    after: String
+  ): InvitedUserResponse
+}

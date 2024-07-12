@@ -1,0 +1,164 @@
+#query Post($postId:String!){
+#    response: getPostById(postId: $postId ){
+#        message
+#        errorCodeForClient
+#        error
+#        errorCodeForClient
+#        data {
+#            id
+#            title
+#            description
+##            categories{
+##                id
+##                name
+##                status
+##                icon
+##                iconUrl
+##                selected
+##            }
+#            postType
+#            audioByteId
+#            audioByteUrl
+##            audioBytePreviewStartTime
+##            audioBytePreviewEndTime
+#            audioDuration
+##            startTime
+##            endTime
+#            visibility
+#            createdBy{
+#                id
+#                username
+#                bio
+#                avatar
+#                avatarUrl
+#                themeUrl
+#                isAvatar
+#                frame
+#                frameUrl
+#                isFrameLive
+#            }
+#            replyCount
+#            playCount
+#            likeCount
+##            postUsertype
+#            createdAt
+#            updatedAt
+##            guidelines{
+##                id
+##                name
+##            }
+##            members{
+##                id
+##                username
+##                bio
+##                avatar
+##                avatarUrl
+##                themeUrl
+##                isAvatar
+##                frame
+##                frameUrl
+##                isFrameLive
+##            }
+##            membersCount
+##            replyAudioByteCount
+##            mainCategory{
+##                id
+##                name
+##                status
+##                parent
+##                subTopics{
+##                    id
+##                    name
+##                    status
+##                    icon
+##                    iconUrl
+##                    selected
+##                }
+##                createdAt
+##                updatedAt
+##            }
+##            jampodCount
+##            channelId
+##            status
+##            isDeleted
+##            rsvp
+##            createdJampod
+##            media
+##            mediaM
+##            mediaS
+##            mediaXs
+#            mediaUrl
+##            mediaUrlM
+#            mediaUrlS
+##            mediaUrlXs
+#            mediaType
+##            pinned
+##            sortOrder
+##            repod
+##            repodCount
+##            thumbnail
+##            thumbnailXs
+##            thumbnailM
+#            thumbnailS
+#            thumbnailUrl
+##            thumbnailUrlXs
+##            thumbnailUrlM
+##            thumbnailUrlS
+#            language
+##            insertables
+##            sharingImage
+##            sharingImageUrl
+##            isLastItem
+##            parallelizationUrl
+##            total
+##            bgMusicId
+##            pitchId
+##            moderator
+##            reportCount
+##            hashTags
+#        }
+#    }
+#}
+
+query PopularFeeds($pageNo: Int!){
+    response: getPopularFeedV1(pageNumber: $pageNo){
+        errorCodeForClient
+        error
+        message
+        statusCode
+        data
+    }
+}
+
+query UserPostRelations($postId: String!){
+    response:getUserPostRelations(voicePodId: $postId){
+        data {
+            audioPlayedTime
+            bookmarkedPost
+            commentInteracted
+            isFollowingCreator
+            isRepod
+            postLikeByUser
+            playedAudioByte
+        }
+    }
+}
+
+#mutation MarkPodAsViewed($voicepodId:String!){
+#    response:markPodAsViewed(voicePodId: $voicepodId){
+#        data
+#        error
+#        message
+#        statusCode
+#        errorCodeForClient
+#    }
+#}
+#mutation  MarkPodAsPlayed($voicepodId:String!){
+#    response:markPodAsPlayed(voicePodId: $voicepodId){
+#        data
+#        error
+#        message
+#        statusCode
+#        errorCodeForClient
+#    }
+#}

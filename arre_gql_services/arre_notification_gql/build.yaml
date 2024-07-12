@@ -1,0 +1,13 @@
+targets:
+  $default:
+    builders:
+      ferry_generator|graphql_builder:
+        enabled: true
+        options:
+          schema: arre_notification_gql|lib/src/notification_schema.graphql
+      ferry_generator|serializer_builder:
+        enabled: true
+        options:
+          schema: arre_notification_gql|lib/src/notification_schema.graphql
+
+#RUN dart run build_runner build

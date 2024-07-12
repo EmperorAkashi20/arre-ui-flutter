@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "577973200263",
+    "project_id": "arre-voice",
+    "storage_bucket": "arre-voice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577973200263:android:794e0b73693bb52e175f22",
+        "android_client_info": {
+          "package_name": "com.arre.voice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577973200263-ppqg5og5hfgi0se2p9v3jgnpv36p1t88.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arre.voice",
+            "certificate_hash": "336cd491ff3206cee5472ad09617eca42f6d3688"
+          }
+        },
+        {
+          "client_id": "577973200263-hcdcois52au1hkao0s7a0uj95vmtd2ep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmyPzXbcOEguu6nvnAp2Tv09-jEaBG8TI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577973200263-hcdcois52au1hkao0s7a0uj95vmtd2ep.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "577973200263-72q2ed7jpfdo70sanlsmtemn4t0pl4mo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.arre.arrevoice",
+                "app_store_id": "1615378103"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

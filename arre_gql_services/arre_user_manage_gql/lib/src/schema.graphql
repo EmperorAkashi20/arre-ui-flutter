@@ -1,0 +1,247 @@
+type CheckUsernameResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: Boolean
+}
+
+type Logout {
+  userId: String
+}
+
+type LogoutResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: Logout
+}
+
+type Mutation {
+  UserProfile(userId: String): UserProfile
+  sendOTP(
+    countryCode: String
+    phoneNumber: String
+    secureToken: String
+    preferredOTPProvider: PreferredOTPProviderEnum = SMS
+    marketingParams: String
+    inviteLinkUsed: String
+    inviteQueryParams: String
+    gender: String
+  ): SendOTPResponse
+  verifyOTP(
+    countryCode: String
+    phoneNumber: String
+    secureToken: String
+    preferredOTPProvider: PreferredOTPProviderEnum = SMS
+    otp: Int
+    operatingSystem: String
+    device: String
+  ): VerifyOTPResponse
+  logout(userId: String): LogoutResponse
+  updateOnboardingInfo(
+    userId: String
+    gender: String
+    languageCsv: String
+    userName: String
+  ): OnboardingUpdateResponse
+  suspendUserProfile(userId: String!): suspendUserProfileResponse
+  updatePreferences(
+    languageCsv: String!
+    topicsCsv: String!
+  ): updatePreferencesResponse
+  unSuspendUserProfile(userId: String!): unSuspendUserProfileResponse
+  updateUserProfile(
+    profilePictureMediaId: String
+    bio: String
+    twitterHandle: String
+    instagramHandle: String
+    linkedinHandle: String
+    youtubeHandle: String
+    spotifyHandle: String
+    website: String
+    city: String
+    country: String
+  ): genericResponse
+}
+
+type OnboardingUpdate {
+  userId: String
+  inviteLink: String
+}
+
+type OnboardingUpdateResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: OnboardingUpdate
+}
+
+enum PreferredOTPProviderEnum {
+  SMS
+  Whatsapp
+}
+
+type Query {
+  UserDetailsById(userId: String): UserProfileResponse
+  UserDetailsByIdV2(userId: String): UserProfileResponseV2
+  UserDetailsByUsername(username: String!): UserProfileResponseV2
+}
+
+type SendOTP {
+  userId: String
+  isNewUser: Boolean
+}
+
+type SendOTPResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: SendOTP
+}
+
+type UserProfile {
+  userId: String!
+  firstname: String
+  lastname: String
+  avatar: String
+  avatarXs: String
+  avatarS: String
+  avatarM: String
+  avatarUrl: String
+  frameUrl: String @deprecated(reason: "remove this field from query")
+  themeUrl: String @deprecated(reason: "remove this field from query")
+  avatarUrlm: String
+  avatarUrlxs: String
+  avatarUrls: String
+  username: String!
+  isAvatar: String!
+  theme: String
+  gender: String!
+  isDeactivated: Boolean!
+  languages: [String]
+  followersCount: Int!
+  followingCount: Int!
+  isFollowing: Boolean!
+  phoneNumber: String!
+  bio: String
+  twitterHandle: String
+  instagramHandle: String
+  frame: String
+  moderationStatus: String
+  inviterUserId: String!
+  createdAt: String
+  updatedAt: String
+  isDeleted: Boolean!
+}
+
+type UserProfileResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: UserProfile
+}
+
+type UserProfileResponseV2 {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: UserProfileV2
+}
+
+type UserProfileV2 {
+  userId: String!
+  firstname: String
+  lastname: String
+  profilePictureMediaId: String
+  username: String!
+  gender: String!
+  deletionStatus: String!
+  languages: [String]
+  phoneNumber: String!
+  moderationStatus: String
+  verificationStatus: String
+  publicTags: [String]
+  profileLink: String
+  inviterUserId: String!
+  createdAt: String
+  updatedAt: String
+  profile: profile
+}
+
+type VerifyOTP {
+  userId: String
+  countryCode: String
+  phoneNumber: String
+  authToken: String
+  isOnboardingComplete: Boolean
+}
+
+type VerifyOTPResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: VerifyOTP
+}
+
+type genericResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: String
+}
+
+type profile {
+  userId: String!
+  bio: String
+  twitterHandle: String
+  instagramHandle: String
+  linkedinHandle: String
+  youtubeHandle: String
+  spotifyHandle: String
+  website: String
+  city: String
+  country: String
+  createdAt: String!
+  updatedAt: String!
+}
+
+type suspendUser {
+  userId: String
+}
+
+type suspendUserProfileResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: suspendUser
+}
+
+type unSuspendUserProfileResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: suspendUser
+}
+
+type updatePreferences {
+  languageCsv: String
+  topicsCsv: String
+}
+
+type updatePreferencesResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: String
+}

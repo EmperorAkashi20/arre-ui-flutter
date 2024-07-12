@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "arreflutterdev": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "storage": {
+    "s30d361d54": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  }
+}

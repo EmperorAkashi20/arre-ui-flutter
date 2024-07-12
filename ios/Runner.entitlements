@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>aps-environment</key>
+	<string>development</string>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:example.com</string>
+		<string>applinks:arrevoice1.gsc.im</string>
+		<string>applinks:arrevoice1-gsalt.gsc.im</string>
+		<string>https://www.arre.co.in/</string>
+		<string>applinks:arrevoice.app.link</string>
+		<string>applinks:arrevoice-alternate.app.link</string>
+		<string>applinks:arrevoice.co</string>
+		<string>applinks:arrevoice.com</string>
+	</array>
+</dict>
+</plist>

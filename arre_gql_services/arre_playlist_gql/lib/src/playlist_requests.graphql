@@ -1,0 +1,132 @@
+query PlaylistDetails($playlistId: String!) {
+    response: getPlaylistDetails(playlistId: $playlistId) {
+        message
+        error
+        data {
+            ...Playlist
+        }
+    }
+}
+
+query PlaylistByUserId(
+    $privacy: privacyType!
+    $userId: String!
+    $after: String!
+) {
+    response: getAllPlaylists(privacy: $privacy, userId: $userId, after: $after) {
+        data {
+            ...Playlist
+        }
+    }
+}
+
+mutation CreatePlaylist(
+    $title: String!
+    $privacy: String!
+    $coverImage: String
+) {
+    response: createPlaylist(
+        title: $title
+        privacy: $privacy
+        coverImage: $coverImage
+    ) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            ...Playlist
+        }
+    }
+}
+
+mutation EditPlaylist(
+    $playlistId: String!
+    $title: String
+    $privacy: String
+    $coverImage: String
+) {
+    response: editPlaylist(
+        playlistId: $playlistId
+        title: $title
+        privacy: $privacy
+        coverImage: $coverImage
+    ) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            ...Playlist
+        }
+    }
+}
+
+mutation DeletePlaylist($playlistId: String!) {
+    response: deletePlaylist(playlistId: $playlistId) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data
+    }
+}
+
+mutation AddPostToPlaylist($playlistId: String!, $voicePodId: String!) {
+    response: addPostToPlayList(
+        playlistId: $playlistId
+        voicePodId: $voicePodId
+    ) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            ...Playlist
+        }
+    }
+}
+
+mutation SavePostToDefaultPlaylist($voicePodId: String!) {
+    response: addPostToMySaved(
+        voicePodId: $voicePodId
+    ) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            ...Playlist
+        }
+    }
+}
+
+
+mutation RemovePostFromPlaylist($playlistId: String!, $voicePodId: String!) {
+    response: removePostFromPlaylist(
+        playlistId: $playlistId
+        voicePodId: $voicePodId
+    ) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            ...Playlist
+        }
+    }
+}
+
+fragment Playlist on playlist {
+    privacy
+    userId
+    listOfPosts
+    coverImage
+    createdOn
+    title
+    shareLink
+    playlistId
+    creatorOfPlaylist
+    totalDuration
+    numberOfPosts
+}

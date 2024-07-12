@@ -1,0 +1,64 @@
+type ListTopCreatorsResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String!
+  data: [ListTopCreatorsResponseData]
+}
+
+type ListTopCreatorsResponseData {
+  userId: String!
+  mediaId: String!
+  languageCode: String!
+  rank: Int!
+}
+
+type Post {
+  voicepodId: String!
+  score: Float!
+}
+
+type Query {
+  listTopCreators(rankGreaterThan: Int): ListTopCreatorsResponse
+  listTopPostsByHashTagId(hashTagUniqueIdentifier: String!): listTopPostsByHashTagIdResponse
+  listTopHashtags(rankGreaterThan: Int!): listTopHashtagsResponse
+}
+
+type TopCreator {
+  topCreatorId: String!
+  userId: String!
+  mediaId: String!
+  rank: Int!
+  languageCode: String!
+  createdOn: Int!
+  lastModifiedOn: Int!
+}
+
+type TopHashtag {
+  hashTagName: String!
+
+  """Smallcase version of hashTagName. Also does not contain #"""
+  hashTagUniqueIdentifier: String!
+  hashTagDescription: String!
+  rank: Int!
+  mediaId: String!
+  languageCode: String!
+  createdOn: String!
+  lastModifiedOn: String!
+}
+
+type listTopHashtagsResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String!
+  data: [TopHashtag]
+}
+
+type listTopPostsByHashTagIdResponse {
+  error: Boolean!
+  message: String!
+  statusCode: Int!
+  errorCodeForClient: String!
+  data: [Post]
+}

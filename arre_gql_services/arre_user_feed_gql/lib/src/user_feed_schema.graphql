@@ -1,0 +1,186 @@
+type Mutation {
+  markPodAsPlayed(voicePodId: String, duration: Int): genericResponse
+  markPodAsViewed(voicePodId: String): genericResponse
+}
+
+type Query {
+#  getPopularFeed(
+#    """Page number used for paginating over results."""
+#    pageNumber: Int
+#  ): popularFeedResponse @deprecated(reason: "Use getPopularFeedV1 instead")
+  getPopularFeedV1(
+    """Page number used for paginating over results."""
+    pageNumber: Int
+  ): popularFeedV1Response
+  getPostById(
+    """Identifier of the post/voicePod."""
+    postId: String!
+  ): postResponse
+  getUserPostRelations(
+    """The id of the voice pod."""
+    voicePodId: String
+  ): userPostRelationsResponse
+}
+
+type genericResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: String
+}
+
+type guideline {
+  id: String
+  name: String
+}
+
+type popularFeedResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: [post]
+}
+
+type popularFeedV1Response {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: [String]
+}
+
+type post {
+  id: ID
+  title: String!
+  description: String
+  jampodparticipants: [user]
+  categories: [subTopic]
+  postType: Int!
+  audioByteId: String!
+  audioByteUrl: String @deprecated(reason: "use audioByteId field with media service to get signed url")
+  audioBytePreviewStartTime: Int
+  audioBytePreviewEndTime: Int
+  audioDuration: Int
+  startTime: String
+  endTime: String
+  visibility: Int!
+  createdBy: user!
+  replyCount: Int!
+  playCount: Int!
+  likeCount: Int!
+  postUsertype: Int!
+  createdAt: String!
+  updatedAt: String!
+  guidelines: [guideline]
+  members: [user]
+  membersCount: Int
+  replyAudioByteCount: Int
+  mainCategory: topic
+  jampodCount: Int
+  channelId: String
+  status: String
+  isDeleted: Boolean
+  rsvp: Boolean
+  createdJampod: Boolean
+  voicepod: post
+  media: String
+  mediaM: String
+  mediaS: String
+  mediaXs: String
+  mediaUrl: String @deprecated(reason: "use media field with media service to get signed url")
+  mediaUrlM: String
+  mediaUrlS: String
+  mediaUrlXs: String
+  mediaType: Int
+  pinned: Boolean
+  sortOrder: Int
+  repod: Boolean
+  repodCount: Int
+  parentPostData: post
+  thumbnail: String
+  thumbnailXs: String
+  thumbnailM: String
+  thumbnailS: String
+  thumbnailUrl: String @deprecated(reason: "use thumbnail field with media service to get signed url")
+  thumbnailUrlXs: String
+  thumbnailUrlM: String
+  thumbnailUrlS: String
+  language: String
+  insertables: [String]
+  sharingImage: String
+  sharingImageUrl: String @deprecated(reason: "use sharingImage with media service to get signed url")
+  isLastItem: Boolean
+  parallelizationUrl: String
+  total: Int
+  bgMusicId: String
+  pitchId: String
+  moderator: String
+  jampodModerator: user
+  reportCount: Int
+  hashTags: [String]
+}
+
+type postResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: post
+}
+
+enum status {
+  active
+  inactive
+}
+
+type subTopic {
+  id: ID
+  name: String
+  status: status
+  icon: String
+  iconUrl: String
+  selected: Boolean
+}
+
+type topic {
+  id: ID
+  name: String
+  status: status
+  parent: String
+  subTopics: [subTopic]
+  createdAt: String
+  updatedAt: String
+}
+
+type user {
+  id: ID
+  username: String
+  bio: String
+  avatar: String
+  avatarUrl: String @deprecated(reason: "use avatar field with media service to get signed url")
+  themeUrl: String @deprecated(reason: "use theme field with media service to get signed url")
+  isAvatar: String
+  frame: String
+  frameUrl: String @deprecated(reason: "use frame field with media service to get signed url")
+  isFrameLive: Boolean
+}
+
+type userPostRelations {
+  postLikeByUser: Boolean
+  commentInteracted: Boolean
+  audioPlayedTime: [String]
+  bookmarkedPost: Boolean
+  playedAudioByte: Boolean
+  isRepod: Boolean
+  isFollowingCreator: Boolean
+}
+
+type userPostRelationsResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: userPostRelations
+}

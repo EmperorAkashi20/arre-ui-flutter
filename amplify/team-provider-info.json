@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-arreflutter-dev-152834-authRole",
+      "UnauthRoleArn": "arn:aws:iam::833825870069:role/amplify-arreflutter-dev-152834-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::833825870069:role/amplify-arreflutter-dev-152834-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-arreflutter-dev-152834-deployment",
+      "UnauthRoleName": "amplify-arreflutter-dev-152834-unauthRole",
+      "StackName": "amplify-arreflutter-dev-152834",
+      "StackId": "arn:aws:cloudformation:ap-south-1:833825870069:stack/amplify-arreflutter-dev-152834/424c3e80-cdc0-11eb-9c78-0a1ae730a192",
+      "AmplifyAppId": "d3u6qs998jpzz4"
+    },
+    "categories": {
+      "auth": {
+        "arreflutterdev": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,2775 @@
+directive @aqlDocument(
+  collection: String!
+  key: String
+  filter: String
+  sort: AqlSortInput
+  limit: AqlLimitInput
+) on FIELD_DEFINITION
+
+directive @aqlNode(
+  edgeCollection: String!
+  direction: AqlEdgeDirection!
+  filter: String
+  sort: AqlSortInput
+  limit: AqlLimitInput
+  options: AqlTraverseOptionsInput
+) on FIELD_DEFINITION
+
+directive @aqlEdge(
+  direction: AqlEdgeDirection!
+  collection: String!
+  filter: String
+  sort: AqlSortInput
+  limit: AqlLimitInput
+  options: AqlTraverseOptionsInput
+) on FIELD_DEFINITION
+
+directive @aqlEdgeNode on FIELD_DEFINITION
+
+directive @aql(expression: String!) on FIELD_DEFINITION
+
+directive @aqlSubquery(query: String!, return: String) on FIELD_DEFINITION
+
+directive @aqlKey on FIELD_DEFINITION
+
+directive @aqlRelayConnection(
+  edgeCollection: String
+  edgeDirection: AqlEdgeDirection
+  cursorExpression: String
+  source: String
+  filter: String
+  sortOrder: AqlSortOrder = ASC
+) on FIELD_DEFINITION | OBJECT
+
+directive @aqlRelayEdges on FIELD_DEFINITION | OBJECT
+
+directive @aqlRelayPageInfo on FIELD_DEFINITION | OBJECT
+
+directive @aqlRelayNode on FIELD_DEFINITION | OBJECT
+
+directive @aqlNewQuery on FIELD_DEFINITION
+
+# Represents the direction of an edge in the graph relative to the current node
+enum AqlEdgeDirection {
+  OUTBOUND
+  INBOUND
+  ANY
+}
+
+# Represents the order of a sorting operation
+enum AqlSortOrder {
+  DESC
+  ASC
+}
+
+input AqlSortInput {
+  # The property to sort on
+  property: String!
+
+  # The order to sort in. Defaults ASC
+  order: AqlSortOrder = ASC
+
+  # Change the object being sorted. Defaults to $field
+  sortOn: String
+}
+
+input AqlLimitInput {
+  # The upper limit of documents to return
+  count: String!
+
+  # The number of documents to skip
+  skip: String
+}
+
+input AqlTraverseOptionsInput {
+  # Enables breadth-first search
+  bfs: Boolean
+
+  # - "path": guarantees no path is returned with a duplicate vertex
+  # - "global": guarantees each vertex is visited at most once for the whole traversal
+  # - "none": (default) no uniqueness check
+  uniqueVertices: String
+
+  # - "path": (default) guarantees no path is returned with a duplicate edge
+  # - "none": allows paths to 'double back' onto edges cyclically
+  uniqueEdges: String
+}
+
+type Query {
+  languages: [Language!]
+  publicProfileV1(profileId: String): publicProfileResp
+  checkIfFollowingOrNot(otherUserId: String!): checkIfFollowingOrNotResponse
+  avatars(gender: String): [Avatar]
+  getPostReplies(postId: String, offset: Int, limit: Int): GetPostRepliesResp
+  getDraftFlag: getDraftFlagRes
+  getTrendingHashtagsForVP: GetTrendingHashtagsForVPResponse
+  getFollowListV1(searchString: String): GetFollowListV1Response
+}
+
+type Mutation {
+  followUser(otherUserId: String): followUnfollowResponse
+  unFollowUser(otherUserId: String): followUnfollowResponse
+  blockUser(blockUserId: Int): blockUserResp
+  deletePost(postId: String, postType: Int): ResGeneric
+  createPostV2(input: CreatePostV2): CreatePostResp
+  likePost(postId: String): ResGeneric
+  unLikePost(postId: String): ResGeneric
+  addPostReplyInteraction(
+    postId: String
+    replyId: String
+    interactionType: String
+    level: Int
+    parentID: String
+  ): ResGeneric
+  removePostReplyInteraction(
+    postId: String
+    replyId: String
+    interactionType: String
+    level: Int
+    parentID: String
+  ): ResGeneric
+  sendPostReply(input: sendPostReplyInput): SendPostReplyResp
+  addContactsOfUserV3(
+    input: AddContactsOfUserV3Input!
+  ): AddContactsOfUserV3Response
+}
+
+# Admin object structure
+type Admin {
+  id: ID!
+  sub: ID!
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# Topic object structure
+enum Status {
+  active
+  inactive
+}
+
+type SubTopic {
+  id: ID!
+  name: String
+  status: Status
+  icon: String
+  iconUrl: String
+  selected: Boolean
+}
+
+type Topic {
+  id: ID!
+  name: String
+  status: Status
+  parent: String
+  subTopics: [SubTopic]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# Language object structure
+type Language {
+  id: ID!
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  message: String
+  nameInEnglish: String!
+  selected: Boolean!
+}
+
+# User object structure
+type User {
+  id: ID!
+  username: String
+  avatarXs: String
+  avatarS: String
+  avatarM: String
+  avatar: String
+  avatarThumbnail: String
+  avatarThumbnailUrl: String
+  avatarUrl: String
+  avatarUrlxs: String
+  avatarUrls: String
+  avatarUrlm: String
+  isAvatar: String
+  theme: String
+  themeUrl: String
+  gender: String
+  isVerified: Boolean
+  phoneNumber: String
+  languages: [Language]
+  reasons: [Reason]
+  topics: [Topic]
+  showGender: Boolean
+  isSent: Boolean
+  followersCount: Int
+  followingCount: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  isDiscussionIntroSeen: Boolean
+  verificationStatus: Int
+  following: Boolean
+  isFollowing: Boolean
+  bio: String
+  limitOfPosts: Int
+  twitterHandle: String
+  instagramHandle: String
+  typeOfParticipation: Int
+  firstname: String
+  lastname: String
+  invitedBy: User
+  mutuals: [String]
+  isSuggested: Boolean
+  frame: String
+  frameUrl: String
+  isFrameLive: Boolean
+  isDeactivated: Boolean
+  numberOfFollowers: Int
+  moderationStatus: String
+}
+
+type InvitedBy {
+  id: String
+  avatarUrl: String
+  avatarUrlxs: String
+  avatarUrls: String
+  avatarUrlm: String
+  themeUrl: String
+  isAvatar: String
+  username: String
+  phoneNumber: String
+  isFollowing: Boolean
+}
+
+input TopicAndSubTopicIds {
+  topicId: String
+  subTopicIds: [String]
+}
+
+input Pronouns {
+  name: String
+  id: Int
+  isMain: Boolean
+}
+
+input AddUser {
+  firstname: String!
+  lastname: String!
+  username: String!
+  languages: [String]
+  phoneNumber: String
+  avatar: String
+  theme: String
+  isAvatar: String
+  gender: String
+  isVerified: Boolean
+  reasons: [String]
+  subId: String
+  topics: [TopicAndSubTopicIds]
+  showGender: Boolean
+  verificationStatus: Int
+  pronouns: [Pronouns]
+  timeUserCheckedPrivacyPolicy: String!
+}
+
+input UserAvatar {
+  firstname: String!
+  lastname: String!
+  username: String!
+}
+
+type UserRespData {
+  id: String
+  username: String
+  firstname: String
+  lastname: String
+  avatarUrl: String
+  avatarUrlxs: String
+  avatarUrls: String
+  avatarUrlm: String
+  isAvatar: String
+}
+
+type UserAvatarData {
+  avatar: String
+  avatarXs: String
+  avatarS: String
+  avatarM: String
+  avatarUrl: String
+  avatarUrlxs: String
+  avatarUrls: String
+  avatarUrlm: String
+}
+
+type AddUserResp {
+  status: Boolean
+  message: String
+  data: UserRespData
+}
+
+type UserAvatarResp {
+  status: Boolean
+  message: String
+  data: UserAvatarData
+}
+
+type discussionIntroSeenResp {
+  status: Boolean
+  message: String
+}
+
+type followUnfollowResponse {
+  status: Boolean
+  message: String
+}
+
+type GetMySpaceUserInfoResp {
+  status: Boolean
+  message: String
+  error: String
+  data: User
+}
+
+type getFollowersListData {
+  followersCount: Int
+  followingCount: Int
+  users: [User]
+}
+
+type getFollowersListResp {
+  status: Boolean
+  message: String
+  error: String
+  data: getFollowersListData
+}
+
+type blockUserResp {
+  status: Boolean
+  message: String
+  error: String
+  data: User
+}
+
+type publicProfileResp {
+  status: Boolean
+  message: String
+  error: String
+  data: User
+}
+
+type getMembersResp {
+  status: Boolean
+  message: String
+  data: [User]
+  error: String
+}
+
+type userWithFollowerResp {
+  user: User
+  isFollowing: String
+  commonfollowers: [User]
+  commonFollowersCount: Int
+}
+
+type getMembersFollowersData {
+  users: [userWithFollowerResp]
+  searchString: String
+}
+
+type getMembersFollowersResp {
+  status: Boolean
+  message: String
+  data: getMembersFollowersData
+  error: String
+}
+
+type OtpResponse {
+  status: Boolean
+  message: String
+  data: String
+  error: String
+}
+
+input UpdateUser {
+  firstname: String
+  lastname: String
+  username: String
+  bio: String
+  avatar: String
+  theme: String
+  isAvatar: String
+  frames: String
+  isFrameLive: Boolean
+  twitterHandle: String
+  instagramHandle: String
+}
+
+input GetUserFriendsInput {
+  offset: Int
+  limit: Int
+  womenOnly: Boolean
+  searchString: String
+}
+
+input GetUsersToInviteInput {
+  offset: Int
+  limit: Int
+  womenOnly: Boolean
+  jampodId: String
+  searchString: String
+}
+
+input GetUsersBySearchIncludesWomenInput {
+  searchString: String
+  offset: Int
+  limit: Int
+  womenOnly: Boolean
+}
+
+input GetUsersBySearchInput {
+  searchString: String
+  offset: Int
+  limit: Int
+}
+
+input GetSuggestedUserWithCategory {
+  topicName: String
+  isDefault: Boolean
+  defaultUser: [String]
+}
+
+input ReportUserInput {
+  otherUserId: String!
+  message: String
+  issueTypeIds: [String]
+  evidence: [String]
+  audio: String
+}
+
+type ReportUserResp {
+  status: Boolean
+  message: String
+  data: String
+  error: String
+}
+
+type createTicketResField {
+  ticketId: String
+}
+
+type createTicketRes {
+  status: Boolean
+  message: String
+  data: createTicketResField
+}
+
+type ticketReplyResFields {
+  attachmentUrls: [String]
+}
+
+type ticketReplyRes {
+  status: Boolean
+  message: String
+  error: String
+  data: ticketReplyResFields
+}
+
+type updateCachedUserResponse {
+  status: Boolean
+  message: String
+  error: String
+  data: [String]
+}
+
+input UpdateEndPointInput {
+  deviceToken: String!
+  service: String!
+}
+
+input LogoutInput {
+  deviceToken: String!
+}
+
+type UsernameAvailabilityRes {
+  usernameAvailability: Boolean
+  suggestions: [String]
+}
+
+type UsernameAvailabilityAndSuggestionsRes {
+  status: Boolean
+  message: String
+  data: UsernameAvailabilityRes
+  error: String
+}
+
+type UserAttribute {
+  Name: String
+  Value: String
+}
+
+type VerifyPhoneNumberRes {
+  status: Boolean
+  message: String
+  error: String
+  data: [UserAttribute]
+}
+
+type ticketAuthor {
+  type: String
+}
+
+type adminAttachment {
+  href: String
+  authorization: String
+}
+
+type conversationFields {
+  summary: String
+  status: String
+  author: ticketAuthor
+  content: String
+  attachmentUrls: [String]
+  attachments: [adminAttachment]
+}
+
+type getConversationRes {
+  status: Boolean
+  message: String
+  error: String
+  data: [conversationFields]
+}
+
+type getTicketsListzField {
+  ticketId: String
+  description: String
+  createdAt: String
+  category: String
+  ticketStatus: String
+  unreadMessageCount: Int
+}
+
+type getTicketsListRes {
+  status: Boolean
+  message: String
+  error: String
+  data: [getTicketsListzField]
+}
+
+type getArchiveLisetResFields {
+  ticketId: String
+  description: String
+  createdAt: String
+  category: String
+}
+
+type getArchiveLisetRes {
+  status: Boolean
+  message: String
+  error: String
+  data: [getArchiveLisetResFields]
+}
+
+type getUnreadMessageCountResFields {
+  unreadMessageCount: Int
+  totalTicketsCount: Int
+  archiveTicketsCount: Int
+}
+
+type getUnreadMessageCountRes {
+  status: Boolean
+  message: String
+  error: String
+  data: getUnreadMessageCountResFields
+}
+
+type GetSessionCountResponseData {
+  sessionCount: Int
+}
+
+type GetSessionCountResponse {
+  status: Boolean
+  message: String
+  error: String
+  data: GetSessionCountResponseData
+}
+
+type ticketStatusField {
+  statusType: String
+}
+
+type getTicketDetailsRes {
+  status: Boolean
+  message: String
+  error: String
+  data: ticketStatusField
+}
+
+type GetListOfPronounsResponseData {
+  id: Int
+  name: String
+}
+
+type GetListOfPronounsResponse {
+  status: Boolean
+  message: String
+  error: String
+  data: [GetListOfPronounsResponseData]
+}
+
+type GetPeopleYouCanFollowResponse {
+  status: Boolean
+  message: String
+  error: String
+  data: [User]
+}
+
+input DeviceInfo {
+  deviceId: String!
+  androidVersion: String!
+}
+
+input createTicketInput {
+  description: String
+  key: [String]
+  category: String
+}
+
+input ticketReplyInput {
+  description: String
+  key: [String]
+  ticketId: String
+}
+
+type ReportCategory {
+  id: String
+  name: String
+  icon: String
+}
+
+type reportCategoriesResp {
+  status: Boolean
+  message: String
+  error: String
+  data: [ReportCategory]
+}
+
+type checkIfFollowingOrNotResponse {
+  status: Boolean
+  message: String
+  error: String
+  isFollowing: Boolean
+}
+
+type GetUserSubIdResponseData {
+  subId: String
+}
+
+type GetUserSubIdResponse {
+  status: Boolean
+  message: String
+  error: String
+  data: GetUserSubIdResponseData
+  responseCode: Int
+}
+
+type suggestedUsersRes {
+  status: Boolean
+  message: String
+  data: [User]
+  error: String
+}
+
+type categoriesSuggUserRes {
+  status: Boolean
+  message: String
+  data: sortedCategories
+  error: String
+}
+
+type sortedCategories {
+  categories: [String]
+  defaultTopicUsers: [User]
+}
+
+type categoriesUserRes {
+  status: Boolean
+  message: String
+  data: [User]
+  error: String
+}
+
+input suggestedUsersByTopics {
+  topic: String
+  order: Int
+  users: [String]
+}
+
+type trendingUserSearch {
+  recentSearch: String
+  trendingSearch: [String]
+}
+
+type recentTrendingSearchResp {
+  status: Boolean
+  message: String
+  data: trendingUserSearch
+  error: String
+}
+
+type versionDetailResp {
+  status: Boolean
+  message: String
+  data: versionDetail
+  error: String
+}
+
+type sendOTPResponse {
+  status: Boolean
+  message: String
+  data: String
+  error: String
+}
+
+type verifyOTPResult {
+  userId: String
+  countryCode: String
+  phoneNumber: String
+  authToken: String
+  isNewUser: Boolean
+}
+
+type verifyOTPResponse {
+  status: Boolean
+  message: String
+  data: verifyOTPResult
+  error: String
+}
+
+input operatingSystemData {
+  operatingSystem: String
+  operatingSystemVersion: String
+}
+
+input deviceInfoData {
+  modelName: String
+  manufacturer: String
+  deviceName: String
+  deviceUniqueId: String
+  imeiNumber: String
+}
+
+# Reason object structure
+type Reason {
+  id: ID!
+  name: String
+  description: String
+  icon: String
+  iconUrl: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# Reason object structure
+type Avatar {
+  key: String
+  url: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# Reason object structure
+type Theme {
+  key: String
+  url: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# Post object structure
+enum Visibility {
+  public
+  private
+  inviteOnly
+  womenOnly
+}
+
+type RepodPost {
+  isRepod: Boolean
+}
+
+type Post {
+  id: ID!
+  title: String
+  description: String
+  participants: [User]
+  jampodparticipants: [User]
+  categories: [SubTopic]
+  postType: Int
+  audioByteId: String
+  audioByteUrl: String
+  audioBytePreviewStartTime: Int
+  audioBytePreviewEndTime: Int
+  audioDuration: Int
+  startTime: DateTime
+  endTime: DateTime
+  visibility: Int
+  createdBy: User
+  replyCount: Int
+  playCount: Int
+  likeCount: Int
+  postUsertype: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  guidelines: [Guideline]
+  members: [User]
+  membersCount: Int
+  replyAudioByteCount: Int
+  mainCategory: Topic
+  jampodCount: Int
+  channelId: String
+  postLikeByUser: Boolean
+  status: String
+  isDeleted: Boolean
+  rsvp: Boolean
+  commentInteracted: Boolean
+  createdJampod: Boolean
+  voicepod: Post
+  audioPlayedTime: [String]
+  bookmarkedPost: Boolean
+  media: String
+  mediaM: String
+  mediaS: String
+  mediaXs: String
+  mediaUrl: String
+  mediaUrlM: String
+  mediaUrlS: String
+  mediaUrlXs: String
+  mediaType: Int
+  playedAudioByte: Boolean
+  pinned: Boolean
+  sortOrder: Int
+  repod: Boolean
+  isRepod: Boolean
+  repodCount: Int
+  parentPostData: Post
+  thumbnail: String
+  thumbnailXs: String
+  thumbnailM: String
+  thumbnailS: String
+  thumbnailUrl: String
+  thumbnailUrlXs: String
+  thumbnailUrlM: String
+  thumbnailUrlS: String
+  language: Language
+  insertables: [Int]
+  sharingImage: String
+  sharingImageUrl: String
+  isLastItem: Boolean
+  parallelizationUrl: String
+  total: Int
+  bgMusicId: String
+  pitchId: String
+  moderator: String
+  jampodModerator: User
+  reportCount: Int
+  hashTags: [String]
+}
+
+input SelectedSubTopic {
+  topicId: String
+}
+
+input SelectedParticipates {
+  id: String
+}
+
+input AddPost {
+  userId: Int
+  title: String
+  description: String
+  postType: Int
+  audioByteId: String
+  audioBytePreviewStartTime: Int
+  audioBytePreviewEndTime: Int
+  audioDuration: Int
+  startTime: DateTime
+  endTime: DateTime
+  visibility: Int
+  postUsertype: Int
+  selectedTopics: [SelectedSubTopic]
+  participants: [SelectedParticipates]
+}
+
+type PostRespData {
+  postNotCreated: [String]
+}
+
+type AddPostResp {
+  status: Boolean
+  message: String
+  data: PostRespData
+}
+
+input SearchData {
+  searchString: String
+  offset: Int
+  limit: Int
+  postType: String
+  isSearched: Boolean
+}
+
+type RtcTokenResp {
+  channelName: String
+  token: String
+  expireTime: Int
+}
+
+type RtmTokenResp {
+  token: String
+  expireTime: Int
+  userId: String
+}
+
+type RtmTokenResp2 {
+  token: String
+  expireTime: Int
+  userId: String
+  channelName: String
+  workerId: String
+}
+
+input AddGuideline {
+  postId: String
+  name: String
+}
+
+type Guideline {
+  id: String
+  name: String
+}
+
+type AddGuidelineResp {
+  status: Boolean
+  message: String
+  data: Guideline
+}
+
+input RemoveGuideline {
+  postId: String
+  guidelineId: String
+}
+
+type RemoveGuidelineResp {
+  status: Boolean
+  message: String
+}
+
+input SendPostInvite {
+  postId: String
+  inviteeUserId: String
+  message: String
+  invitationFrom: Int
+  postType: Int
+}
+
+input sendPostInviteToMultipleUsers {
+  postId: String
+  inviteeUserId: [String]
+  message: String
+  invitationFrom: Int
+  postType: Int
+}
+
+type SendPostInviteResp {
+  status: Boolean
+  message: String
+}
+
+input CreatePostV1 {
+  title: String!
+  description: String
+  postType: Int!
+  visibility: Int!
+  postUsertype: Int
+  audioByteId: String!
+  audioBytePreviewStartTime: Int
+  audioBytePreviewEndTime: Int
+  audioDuration: Int
+  startTime: DateTime
+  endTime: DateTime
+  selectedTopics: [String]
+  media: String
+  mediaType: Int
+  repod: Boolean
+  isDraft: Boolean
+  thumbnail: String
+  language: String
+  insertables: [Int]
+  parentPostId: String
+  parallelizationUrl: String
+  draftPostId: String
+  bgMusicId: String
+  pitchId: String
+  hashTags: [String]
+}
+
+input CreatePostV2 {
+  title: String!
+  description: String
+  postType: Int!
+  visibility: Int!
+  postUsertype: Int
+  audioByteId: String!
+  audioBytePreviewStartTime: Int
+  audioBytePreviewEndTime: Int
+  audioDuration: Int
+  startTime: DateTime
+  endTime: DateTime
+  selectedTopics: [String]
+  media: String
+  mediaType: Int
+  repod: Boolean
+  isDraft: Boolean
+  thumbnail: String
+  language: String
+  insertables: [String]
+  parentPostId: String
+  parallelizationUrl: String
+  draftPostId: String
+  bgMusicId: String
+  pitchId: String
+  hashTags: [String]
+}
+
+input UpdatePostV1 {
+  title: String
+  description: String
+  postType: Int
+  visibility: Int
+  postUsertype: Int
+  audioByteId: String
+  audioBytePreviewStartTime: Int
+  audioBytePreviewEndTime: Int
+  audioDuration: Int
+  startTime: DateTime
+  endTime: DateTime
+  selectedTopics: [String]
+  media: String
+  mediaType: Int
+  repod: Boolean
+  isDraft: Boolean
+  thumbnail: String
+  language: String
+  insertables: [Int]
+  parentPostId: String
+  parallelizationUrl: String
+  bgMusicId: String
+  pitchId: String
+  hashTags: [String]
+}
+
+type CreatePostResp {
+  status: Boolean
+  message: String
+  data: Post
+}
+
+type updatePostResp {
+  status: Boolean
+  message: String
+  data: Post
+  error: String
+}
+
+input GetGuideline {
+  postId: String!
+}
+
+type userPostsData {
+  count: Int
+  posts: [Post]
+}
+
+type GetUserPostsResp {
+  status: Boolean
+  message: String
+  Data: userPostsData
+}
+
+type PostIssueType {
+  id: String
+  name: String
+}
+
+type PostIssueTypeResp {
+  status: Boolean
+  message: String
+  data: [PostIssueType]
+  error: String
+}
+
+type GetGuidelineResp {
+  status: Boolean
+  message: String
+  data: [Guideline]
+}
+
+type DataJoinResp {
+  post: Post
+}
+
+type JoinResp {
+  status: Boolean
+  message: String
+  data: DataJoinResp
+  error: String
+}
+
+type ResGeneric {
+  status: Boolean
+  message: String
+  error: String
+}
+
+input GetUserPosts {
+  filterType: Int
+  offset: Int
+  limit: Int
+}
+
+type SendPostReplyData {
+  replyId: String
+}
+
+type SendPostReplyResp {
+  status: Boolean
+  message: String
+  data: SendPostReplyData
+  error: String
+}
+
+type SecondLevelReplies {
+  id: ID!
+  message: String!
+  postId: String!
+  parentId: String!
+  replyLevel: Int!
+  parentReplyId: String!
+  createdBy: User!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  interactions: InteractionsData
+  secondLevelInteractions: [String!]
+}
+
+type InteractionsData {
+  heart: Int
+  sad: Int
+  thumbsUp: Int
+  laugh: Int
+}
+
+type Reply {
+  id: ID!
+  message: String!
+  postId: String
+  replyLevel: Int!
+  parentReplyId: String
+  audioByteId: String
+  audioByteUrl: String
+  createdBy: User!
+  interactions: InteractionsData
+  currentUserInteractions: [String!]
+  secondLevelReplies: [SecondLevelReplies!]
+  createdAt: DateTime!
+  updatedAt: DateTime
+}
+
+type GetPostRepliesResp {
+  status: Boolean
+  message: String
+  data: [Reply!]
+  error: String
+}
+
+type GetJampodRes {
+  status: Boolean
+  message: String
+  data: [Post]
+  error: String
+}
+
+type FeedCountResp {
+  hostedCount: Int
+  JoinedCount: Int
+  likedCount: Int
+}
+
+input LaunchJampod {
+  voicepodId: String!
+  visibility: Int!
+  postUsertype: Int
+  startTime: DateTime
+  endTime: DateTime
+  inviteUserIds: [String]
+  status: String
+  selectAll: Boolean
+}
+
+input RSVP {
+  postId: String
+  startTime: String
+  visibility: Int
+}
+
+input repodInput {
+  postId: String
+  voice_pod_id: String
+  isRepod: Boolean
+}
+
+type GetJampodListenersResp {
+  status: Boolean
+  message: String
+  data: [User]
+  error: String
+}
+
+type JampodTimerData {
+  countDown: String
+  speaker: String
+  lastSpeakerSetTime: String
+}
+
+type JoinJampodData {
+  agora: RtcTokenResp
+  voicepodCreator: User
+  typeOfParticipation: Int
+  timer: JampodTimerData
+  moderator: User
+  currentSpeaker: User
+  serverTime: String
+  voicePodId: String
+  maxJammersCount: Int
+}
+
+type JoinJampodData1 {
+  agora: RtcTokenResp
+  voicepodCreator: User
+  typeOfParticipation: Int
+  timer: JampodTimerData
+  moderator: User
+  currentSpeaker: User
+  serverTime: String
+  voicePodId: String
+  maxJammersCount: Int
+  joinTime: DateTime
+}
+
+type JoinJampodRes {
+  status: Boolean
+  message: String
+  data: JoinJampodData
+  error: String
+}
+
+type JoinJampodRes1 {
+  status: Boolean
+  message: String
+  data: JoinJampodData1
+  error: String
+}
+
+type CanBuzzResponse {
+  status: Boolean
+  message: String
+  data: String
+  error: String
+}
+
+type inviteUsersToJampodRes {
+  status: Boolean
+  message: String
+  data: [User]
+  error: String
+}
+
+type jampodStatusRes {
+  status: Boolean
+  message: String
+  data: String
+  error: String
+}
+
+type trendingPodRollPosts {
+  _key: String
+  id: String
+  _rev: String
+  title: String
+  description: String
+  postType: Int
+  visibility: Int
+  audioByteId: String
+  audioBytePreviewStartTime: Int
+  audioBytePreviewEndTime: Int
+  audioDuration: Int
+  media: String
+  mediaType: Int
+  repod: Boolean
+  thumbnail: String
+  language: String
+  parallelizationUrl: String
+  mediaXs: String
+  mediaS: String
+  mediaM: String
+  replyCount: Int
+  playCount: Int
+  likeCount: Int
+  pinned: Boolean
+  sortOrder: Int
+  isDeleted: Boolean
+  isDraft: Boolean
+  postUsertype: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: String
+  updatedBy: String
+}
+
+type draftPostRes {
+  status: Boolean
+  message: String
+  data: [Post]
+  error: String
+}
+
+type userDraftFlag {
+  isDraftAvailable: Boolean
+}
+
+type getDraftFlagRes {
+  status: Boolean
+  message: String
+  data: userDraftFlag
+  error: String
+}
+
+type getDeleteFlag {
+  ispostDeleted: Boolean
+}
+
+type getDeleteFlagRes {
+  status: Boolean
+  message: String
+  data: getDeleteFlag
+}
+
+type GetTrendingHashtagsForVPResponse {
+  status: Boolean
+  message: String
+  data: [String!]
+  error: String
+}
+
+input UpdateWeights {
+  type: String!
+  weight: Int!
+}
+
+input AssignModerator {
+  postId: String!
+  assignModeratorId: String!
+}
+
+input sendPostReplyInput {
+  postId: String
+  message: String
+  audioByteId: String
+  replyLevel: Int
+  parentReplyId: String
+}
+
+input acceptRejectInput {
+  postId: Int
+  type: Int
+  userId: Int
+}
+
+input CreateUpdateTrendingHashtagsInput {
+  type: Int!
+  listOfHashtags: [String!]!
+}
+
+type trendingPodrollRes {
+  status: Boolean
+  message: String
+  data: [Podroll]
+  error: String
+}
+
+type feedSearchRes {
+  data: [Post]
+  searchString: String
+}
+
+type hashTag {
+  id: String
+  hashTag: String
+}
+
+type searchRes {
+  posts: [Post]
+  users: [User]
+  hashTags: [hashTag]
+  type: Int
+  searchString: String
+}
+
+# A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+scalar DateTime
+
+# Conversation object structure
+scalar Date
+
+type Conversation {
+  id: ID!
+  fromUser: String
+  toUser: User
+  unreadCount: Int
+  conversationType: Int
+  lastMessageInfo: Message
+  updatedAt: Date
+}
+
+type conversationData {
+  conversations: [Conversation]
+  conversationsCount: Int
+}
+
+type conversationsResp {
+  status: Boolean
+  message: String
+  error: String
+  data: conversationData
+}
+
+type conversationIdResp {
+  status: Boolean
+  message: String
+  error: String
+  data: String
+}
+
+type BlockedUserResp {
+  status: Boolean
+  message: String
+  error: String
+  data: Boolean
+}
+
+type ResUnReadCountGeneric {
+  status: Boolean
+  message: String
+  error: String
+  count: Int
+}
+
+# Message object structure
+type Message {
+  id: ID!
+  fromUserId: String
+  toUserId: String
+  message: String
+  messageType: Int
+  updatedAt: Date
+  createdAt: Date
+  isDelivered: Boolean
+  isRead: Boolean
+  media: [MessageMedia]
+}
+
+input SendMessage {
+  conversationId: String
+  toUserId: String!
+  message: String!
+  media: [MessageMediaInput]
+  messageType: Int
+}
+
+input MessageMediaInput {
+  type: Int
+  media: String
+  thumbnail: String
+}
+
+type MessageMedia {
+  type: Int
+  media: String
+  mediaS: String
+  mediaXs: String
+  mediaM: String
+  mediaUrl: String
+  mediaUrlXs: String
+  mediaUrlS: String
+  mediaUrlM: String
+  thumbnail: String
+}
+
+type messageResp {
+  status: Boolean
+  message: String
+  error: String
+  data: [Message]
+}
+
+type sendMessageResp {
+  status: Boolean
+  message: String
+  error: String
+  data: Message
+}
+
+type readMessageResp {
+  status: Boolean
+  message: String
+  error: String
+  data: [Message]
+}
+
+# Topic object structure
+input AddService {
+  title: String!
+  description: String
+  categories: [String]
+  servicePicId: String
+  serviceType: Int!
+  minMembers: Int
+  maxMembers: Int
+  minPrice: Int
+  maxPrice: Int
+  draft: Boolean
+}
+
+type UserService {
+  id: ID!
+  title: String!
+  description: String
+  servicePicId: String
+  servicePicUrl: String
+  serviceType: Int!
+  minMembers: Int
+  maxMembers: Int
+  minPrice: Int
+  maxPrice: Int
+  categories: [String]
+  draft: Boolean!
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: String
+}
+
+type Shop {
+  id: String
+  shopPic: String
+  shopPicUrl: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: String
+  updatedBy: String
+}
+
+type category {
+  id: String
+  name: String
+}
+
+type categoryServices {
+  category: category
+  services: [UserService]
+}
+
+type categoryServicesResp {
+  isLast: Boolean
+  result: [categoryServices]
+}
+
+type getUserServicesResp {
+  status: Boolean
+  message: String
+  data: categoryServicesResp
+  error: String
+}
+
+type userServiceResp {
+  status: Boolean
+  message: String
+  data: UserService
+  error: String
+}
+
+type UserShop {
+  user: User
+  shop: Shop
+}
+
+type getUserShopDetailsResp {
+  status: Boolean
+  message: String
+  error: String
+  data: UserShop
+}
+
+type updateBannerResp {
+  status: Boolean
+  message: String
+}
+
+type individualCount {
+  you: Int
+  social: Int
+  official: Int
+}
+
+type CountRespObj {
+  unreadNotificationCount: Int
+  individualCount: individualCount
+}
+
+type GetUnreadNotificationCountResp {
+  status: Boolean
+  message: String
+  data: CountRespObj
+  error: String
+}
+
+input GetNotificationsInput {
+  notificationCategory: String!
+  offset: Int
+  limit: Int
+}
+
+type extraData {
+  title: String
+  coverImageUrl: String
+  voicepodsCount: String
+  audioDuration: String
+  username: String
+  avatarUrl: String
+  themeUrl: String
+  isAvatar: String
+  frame: String
+  frameUrl: String
+  isFrameLive: Boolean
+  description: String
+}
+
+type CMSNotificationData {
+  destinationId: String
+  destinationType: String
+  bannerImageUrl: String
+  thumbnailImageUrl: String
+  data: extraData
+  ctaText: String
+}
+
+type Notification {
+  id: String
+  fromUserId: String
+  toUserId: String
+  title: String
+  message: String
+  isSeen: Boolean
+  notificationCategory: Int
+  notificationType: Int
+  createdAt: DateTime
+  fromUser: User
+  postId: Int
+  postType: Int
+  conversationId: String
+  url: String
+  isUserBlocked: Boolean
+  postTime: DateTime
+  onboardingInvitedUserCode: Int
+  acceptRejectRequestCode: Int
+  subMessage1: String
+  subMessage2: String
+  ticketStatus: String
+  ticketId: String
+  isCMSNotification: Boolean
+  cmsNotificationData: CMSNotificationData
+}
+
+type NotificationsResp {
+  status: Boolean
+  message: String
+  data: [Notification]
+  error: String
+}
+
+input NotificationsSeenInput {
+  notificationIds: [String]!
+}
+
+type UserNotificationSetting {
+  allNotifications: Boolean
+  lockScreenNotifications: Boolean
+  floatingNotification: Boolean
+  showNewFollower: Boolean
+  showVoicePodComments: Boolean
+  showFollowingActivity: Boolean
+  showJampodSessions: Boolean
+}
+
+type GetUserNotificationSettingsResp {
+  status: Boolean
+  message: String
+  error: String
+  data: UserNotificationSetting
+}
+
+input UpdateUserNotificationSettingsInput {
+  allNotifications: Boolean
+  lockScreenNotifications: Boolean
+  floatingNotification: Boolean
+  showNewFollower: Boolean
+  showVoicePodComments: Boolean
+  showFollowingActivity: Boolean
+  showJampodSessions: Boolean
+}
+
+# Effect object structure
+type Effect {
+  key: String!
+  url: String!
+  icon: String!
+}
+
+type getEffectsResp {
+  status: Boolean
+  message: String
+  data: [Effect]
+  error: String
+}
+
+input addEffect {
+  name: String
+  audio: String
+  icon: String
+}
+
+# backGroundMusic object structure
+type BgMusic {
+  name: String!
+  music: String!
+  musicUrl: String
+  icon: String
+  iconUrl: String!
+  iconDisabled: String
+  iconDisabledUrl: String
+  id: String!
+}
+
+type getBgMusicResp {
+  status: Boolean
+  message: String
+  data: [BgMusic!]
+  error: String
+}
+
+# backGroundMusic object structure
+type sound {
+  id: String
+  tempo: String
+  pitch: String
+}
+
+type Band {
+  id: String
+  man: sound
+  woman: sound
+  child: sound
+}
+
+type Pitch {
+  id: ID!
+  name: String!
+  iconSelected: String
+  iconUnselected: String
+  iconDisabledlected: String
+  iconDisabledUrl: String
+  iconSelectedUrl: String
+  iconUnselectedUrl: String
+  band: Band
+}
+
+type getPitchResp {
+  status: Boolean
+  message: String
+  data: [Pitch!]
+  error: String
+}
+
+type UserInvite {
+  id: ID!
+  username: String
+  phoneNumber: String
+  inviterId: ID
+  gender: String
+}
+
+type GetInvitedUsersByUserIdResponseData {
+  id: String
+  username: String
+  phoneNumber: String
+  inviterId: String
+  gender: String
+}
+
+type GetInvitedUsersByUserIdResponse {
+  status: Boolean
+  message: String
+  data: [GetInvitedUsersByUserIdResponseData]
+}
+
+type GetInviteeVerificationStatusResponseData {
+  inviteeVerificationStatus: Boolean
+  versionDetail: versionDetail
+}
+
+type versionDetail {
+  version: String
+  buildNumber: Int
+  type: String
+  isForceUpdate: Boolean
+  isDowntime: Boolean
+}
+
+type GetInviteeVerificationStatusResponse {
+  status: Boolean
+  message: String
+  responseCode: Int
+  data: GetInviteeVerificationStatusResponseData
+}
+
+type CheckIfPhoneNumberIsWaitlistedResponseData {
+  id: String
+  phoneNumber: String
+  username: String
+  firstname: String
+  lastname: String
+  gender: String
+  usersInviteDocumentId: String
+  toUserUsername: String
+}
+
+type CheckIfPhoneNumberIsWaitlistedResponse {
+  status: Boolean
+  message: String
+  responseCode: Int
+  data: CheckIfPhoneNumberIsWaitlistedResponseData
+}
+
+type FetchInviteLinkResponseData {
+  inviteLink: String
+}
+
+type FetchInviteLinkResponse {
+  status: Boolean
+  message: String
+  data: FetchInviteLinkResponseData
+}
+
+type FetchInviteLinkStatusResponseData {
+  isInviteLinkUsed: Boolean
+  user: User
+}
+
+type FetchInviteLinkStatusResponse {
+  status: Boolean
+  message: String
+  data: FetchInviteLinkStatusResponseData
+}
+
+type GetNumberOfInvitesLeftTwoResponseData {
+  femaleRequestsMadeTodayCount: Int
+  allyRequestsMadeTodayCount: Int
+  totalRequestsMadeTodayCount: Int
+  femaleRequestsRemainingCount: Int
+  allyRequestsRemainingCount: Int
+  totalRequestsRemainingCount: Int
+  totalNumberOfInvites: Int
+}
+
+type GetNumberOfInvitesLeftTwoResponse {
+  status: Boolean
+  message: String
+  data: GetNumberOfInvitesLeftTwoResponseData!
+}
+
+type CheckNewInvitesAddedStatusResponseData {
+  isNewInvitesAdded: Boolean
+  newNumberOfInvitesAdded: Int
+}
+
+type CheckNewInvitesAddedStatusResponse {
+  status: Boolean
+  message: String
+  data: CheckNewInvitesAddedStatusResponseData
+}
+
+type GetInvitesPerDayPerUserData2 {
+  username: String
+  phoneNumber: String
+  gender: String
+  createdAt: Date
+  isInviteLinkUsed: Boolean
+}
+
+type GetInvitesPerDayPerUserData1 {
+  userId: String
+  username: String
+  phoneNumber: String
+  userInvites: [GetInvitesPerDayPerUserData2]
+  numberOfInvites: Int
+}
+
+type GetInvitesPerDayPerUserResponse {
+  status: Boolean
+  message: String
+  data: [GetInvitesPerDayPerUserData1]
+  totalNumberOfInvites: Int
+}
+
+type GetRemainingInvitesPerUserResponseData {
+  userId: String
+  username: String
+  phoneNumber: String
+  remainingInvites: Int
+}
+
+type GetRemainingInvitesPerUserResponse {
+  status: Boolean
+  message: String
+  data: [GetRemainingInvitesPerUserResponseData]
+}
+
+type CheckIfUserIsBlueTickUserResponseData {
+  isBlueTickUser: Boolean
+}
+
+type CheckIfUserIsBlueTickUserResponse {
+  status: Boolean
+  message: String
+  data: CheckIfUserIsBlueTickUserResponseData
+}
+
+type CheckCurrentUserBulkInviteLinksResponseData {
+  isExpired: Boolean
+  isExhausted: Boolean
+  inviteLinkBulk: String
+  daysLeftForLinkExpiry: Int
+}
+
+type CheckCurrentUserBulkInviteLinksResponse {
+  status: Boolean
+  message: String
+  data: CheckCurrentUserBulkInviteLinksResponseData
+  responseCode: Int
+}
+
+type CheckBulkInviteLinkStatusResponseData {
+  isExpired: Boolean
+  isExhausted: Boolean
+  user: User
+}
+
+type CheckBulkInviteLinkStatusResponse {
+  status: Boolean
+  message: String
+  data: CheckBulkInviteLinkStatusResponseData
+}
+
+type GetBulkInviteUsersResponsePronounsData {
+  id: Int
+  name: String
+  isMain: Boolean
+}
+
+type GetBulkInviteUsersV1ResponseData {
+  bulkUser: User
+  bulkUsersDocumentId: String
+  usersInviteBulkDocumentId: String
+  inviterId: String
+  bulkInviteStatus: String
+  pronouns: [GetBulkInviteUsersResponsePronounsData]
+  showPronounsOnProfile: Boolean
+  pronounsArrayString: [String]
+}
+
+type GetBulkInviteUsersV1Response {
+  status: Boolean
+  message: String
+  data: [GetBulkInviteUsersV1ResponseData]
+}
+
+type CheckPhoneNumberInBulkUsersResponseData {
+  id: String
+  username: String
+}
+
+type CheckPhoneNumberInBulkUsersResponse {
+  status: Boolean
+  message: String
+  responseCode: Int
+  data: CheckPhoneNumberInBulkUsersResponseData
+}
+
+type CheckBulkUserStatusResponseData {
+  id: String
+  username: String
+  phoneNumber: String
+  bulkInviteStatus: String
+}
+
+type CheckBulkUserStatusResponse {
+  status: Boolean
+  message: String
+  data: CheckBulkUserStatusResponseData
+  responseCode: Int
+}
+
+type CheckInviteLinkStatusCommonResponseData {
+  type: Int
+  isInviteLinkUsable: Boolean
+  usersInviteDocumentId: String
+  usersInviteBulkDocumentId: String
+  user: User
+  phoneNumber: String
+}
+
+type CheckInviteLinkStatusCommonResponse {
+  status: Boolean
+  message: String
+  data: CheckInviteLinkStatusCommonResponseData
+}
+
+type UserInviteResponseData {
+  id: String
+  inviteLink: String
+}
+
+type InviteUserInputResponse {
+  status: Boolean
+  message: String
+  data: UserInviteResponseData
+  responseCode: Int
+}
+
+type GenderChosenByInviteeResponseData {
+  id: String
+}
+
+type GenderChosenByInviteeResponse {
+  status: Boolean
+  message: String
+  data: GenderChosenByInviteeResponseData
+}
+
+type AcceptRejectRequestResponseData {
+  id: String
+}
+
+type AcceptRejectRequestResponse {
+  status: Boolean
+  message: String
+  data: AcceptRejectRequestResponseData
+}
+
+type AddInviteLinkResponseData {
+  id: String
+}
+
+type AddInviteLinkResponse {
+  status: Boolean
+  message: String
+  data: AddInviteLinkResponseData
+}
+
+type SendNotificationToInviterResponseData {
+  id: String
+}
+
+type SendNotificationToInviterResponse {
+  status: Boolean
+  message: String
+  responseCode: Int
+  data: SendNotificationToInviterResponseData
+}
+
+type UpdateInviteLinkStatusResponse {
+  status: Boolean
+  message: String
+}
+
+type AddInvitesToAllUsersResponse {
+  status: Boolean
+  message: String
+}
+
+type AddInvitesToSpecificUsersResponse {
+  status: Boolean
+  message: String
+}
+
+type AddUserToWaitlistTwoResponseData {
+  id: String
+  phoneNumber: String
+  status: String
+}
+
+type AddUserToWaitlistTwoResponse {
+  status: Boolean
+  message: String
+  data: AddUserToWaitlistTwoResponseData
+}
+
+type InviteAndNoNumberMismatchTwoResponseData {
+  id: String
+  phoneNumber: String
+}
+
+type InviteAndNoNumberMismatchTwoResponse {
+  status: Boolean
+  message: String
+  responseCode: Int
+  data: InviteAndNoNumberMismatchTwoResponseData
+}
+
+type RequestForBulkInvitesLinkResponseData {
+  usersInviteBulkDocumentId: String
+  inviterId: String
+}
+
+type RequestForBulkInvitesLinkResponse {
+  status: Boolean
+  message: String
+  data: RequestForBulkInvitesLinkResponseData
+}
+
+type AddInviteLinkBulkResponseData {
+  id: String
+}
+
+type AddInviteLinkBulkResponse {
+  status: Boolean
+  message: String
+  data: AddInviteLinkBulkResponseData
+}
+
+type AddBulkInviteUserResponse {
+  status: Boolean
+  message: String
+  data: User
+  err: String
+}
+
+type AcceptBulkInviteUserResponse {
+  status: Boolean
+  message: String
+  data: User
+}
+
+type RejectBulkInviteUserResponse {
+  status: Boolean
+  message: String
+}
+
+type AddBulkInviteUserToSpecificInviteResponse {
+  status: Boolean
+  message: String
+  data: User
+  responseCode: Int
+}
+
+input GetInvitesPerDayPerUserInput {
+  searchByUsername: String
+  searchByStartDate: String
+  searchByEndDate: String
+  isSuccessfulInvite: Boolean
+}
+
+input CheckPhoneNumberInBulkUsersInput {
+  phoneNumber: String
+  usersInviteBulkDocumentId: String
+  username: String
+}
+
+input InviteUserInputObject {
+  username: String
+  phoneNumber: String
+  gender: String
+}
+
+input InviteUserInput {
+  data: InviteUserInputObject!
+}
+
+input GenderChosenByInviteeInput {
+  usersInviteDocumentId: String!
+  genderChosen: String!
+  phoneNumber: String
+}
+
+input AcceptRejectRequestInput {
+  usersInviteDocumentId: String
+  acceptedOrRejectedStatus: String
+}
+
+input AddInviteLinkInputObject {
+  usersInviteDocumentId: String!
+  inviteLink: String!
+  gender: String
+  username: String
+  phoneNumber: String
+  inviter: String
+}
+
+input AddInviteLinkInput {
+  data: AddInviteLinkInputObject!
+}
+
+input SendNotificationToInviterInput {
+  toUserUsername: String!
+  usersInviteDocumentId: String!
+}
+
+input InvitesArrayInput {
+  username: String!
+  phoneNumber: String
+  numberOfInvitesToAdd: Int!
+}
+
+input AddInvitesToSpecificUsersInput {
+  invitesArray: [InvitesArrayInput]!
+}
+
+input AddUserToWaitlistTwoInput {
+  phoneNumber: String!
+}
+
+input InviteAndNoNumberMismatchTwoInput {
+  phoneNumber: String!
+}
+
+input RequestForBulkInvitesLinkInput {
+  numberOfInvitesRequested: Int!
+}
+
+input AddInviteLinkBulkInputObject {
+  usersInviteBulkDocumentId: String!
+  inviteLinkBulk: String!
+  userCount: String
+  inviter: String
+  inviterId: String
+  isBulkInviteLink: String
+}
+
+input AddInviteLinkBulkInput {
+  data: AddInviteLinkBulkInputObject!
+}
+
+input AddBulkInviteUserInput {
+  firstname: String!
+  lastname: String!
+  username: String!
+  languages: [String]
+  phoneNumber: String
+  avatar: String
+  theme: String
+  isAvatar: String
+  gender: String
+  isVerified: Boolean
+  reasons: [String]
+  subId: String
+  topics: [TopicAndSubTopicIds]
+  showGender: Boolean
+  verificationStatus: Int
+  pronouns: [Pronouns]
+  usersInviteBulkDocumentId: String!
+  inviterId: String!
+  timeUserCheckedPrivacyPolicy: String!
+}
+
+input AcceptBulkInviteUserInput {
+  bulkUsersDocumentId: String!
+  usersInviteBulkDocumentId: String!
+}
+
+input RejectBulkInviteUserInput {
+  bulkUsersDocumentId: String!
+  usersInviteBulkDocumentId: String!
+}
+
+input AddBulkInviteUserToSpecificInviteInput {
+  phoneNumber: String!
+  usersInviteDocumentId: String!
+}
+
+type UserContact {
+  id: ID
+  username: String!
+  phoneNumber: String!
+}
+
+type GetInviteListV1ResponseData {
+  id: String
+  username: String
+  phoneNumber: String
+  isInvited: Boolean
+}
+
+type GetInviteListV1Response {
+  status: Boolean
+  message: String
+  data: [GetInviteListV1ResponseData]
+  totalItems: Int
+}
+
+type GetFollowListV1ResponseData {
+  user: User
+  id: String
+  idOfUserWhoCanBeFollowed: String
+  isFollowing: Boolean
+}
+
+type GetFollowListV1Response {
+  status: Boolean
+  message: String
+  data: [GetFollowListV1ResponseData]
+  totalItems: Int
+}
+
+type GetRequestListResponseData {
+  id: String
+  username: String
+  phoneNumber: String
+  avatarUrl: String
+  avatarUrlxs: String
+  avatarUrls: String
+  avatarUrlm: String
+  themeUrl: String
+  isAvatar: String
+}
+
+type GetRequestListResponse {
+  status: Boolean
+  message: String
+  data: [GetRequestListResponseData]
+  totalItems: Int
+}
+
+type GetWaitListResponseDataTwo {
+  phoneNumber: String
+  status: String
+}
+
+type GetWaitListResponseData {
+  id: ID
+  username: String
+  phoneNumber: String
+  isActive: Boolean
+  userId: String
+  isInvited: Boolean
+  userWaitlist: [GetWaitListResponseDataTwo]
+}
+
+type GetWaitListV1ResponseData {
+  id: ID
+  username: String
+  phoneNumber: String
+  isActive: Boolean
+  userId: String
+  isInvited: Boolean
+  userWaitlist: GetWaitListResponseDataTwo
+}
+
+type GetWaitListV1Response {
+  status: Boolean
+  message: String
+  data: [GetWaitListV1ResponseData]
+}
+
+type GetStatusOfContactsSyncResponse {
+  status: Boolean
+  message: String
+  data: Int
+  lastSynced: Date
+}
+
+type AddContactsOfUserV2Response {
+  status: Boolean
+  message: String
+  lastSynced: Date
+}
+
+type AddContactsOfUserV3Response {
+  status: Boolean
+  message: String
+  lastSynced: Date
+}
+
+type SearchWhileSyncingContactsResponseFollowListData {
+  id: String
+  user: User
+  idOfUserWhoCanBeFollowed: String
+  isFollowing: Boolean
+}
+
+type SearchWhileSyncingContactsResponseRequestListData {
+  bulkUsersDocumentId: String
+  usersInviteBulkDocumentId: String
+  inviterId: String
+  bulkUser: User
+  bulkInviteStatus: String
+  showPronounsOnProfile: Boolean
+  pronounsArrayString: [String]
+  pronouns: [GetBulkInviteUsersResponsePronounsData]
+}
+
+type SearchWhileSyncingContactsResponse {
+  status: Boolean
+  message: String
+  searchString: String
+  inviteList: [GetInviteListV1ResponseData]
+  followList: [SearchWhileSyncingContactsResponseFollowListData]
+  waitList: [GetWaitListResponseData]
+  requestList: [SearchWhileSyncingContactsResponseRequestListData]
+}
+
+input UserContactInput {
+  username: String
+  phoneNumber: String
+}
+
+input AddContactsOfUserV2Input {
+  data: [UserContactInput]
+  currentSublistNumber: Int!
+}
+
+input AddContactsOfUserV3Input {
+  data: [UserContactInput]
+}
+
+input SearchWhileSyncingContactsInput {
+  searchString: String
+  data: [UserContactInput]
+}
+
+type Podroll {
+  id: ID
+  title: String!
+  isPrivate: Boolean!
+  description: String
+  coverImageUrlXs: String
+  coverImageUrlS: String
+  coverImageUrlM: String
+  coverImageUrl: String
+  coverImageUrlDark: String
+  coverImageUrlMDark: String
+  coverImageUrlSDark: String
+  coverImageUrlXsDark: String
+  isImageUploaded: Boolean
+  isTrending: Boolean
+  isHashtag: Boolean
+  status: String
+  isLive: Boolean
+  voicepodCount: Int
+  audioDuration: Int
+  user: User
+  createdBy: String
+  isDefault: Boolean
+  isOwner: Boolean
+  userLastPlayedPodroll: User
+}
+
+type GetCreatorPodrollListResponse {
+  status: Boolean
+  message: String
+  data: [Podroll]
+}
+
+type GetAllPodrollListV1ResponseData {
+  dataUser: User
+  dataPodroll: Podroll
+}
+
+type GetAllPodrollListV1Response {
+  status: Boolean
+  message: String
+  data: [GetAllPodrollListV1ResponseData]
+}
+
+type GetAllPodrollListLastPlayedV2Response {
+  status: Boolean
+  message: String
+  data: [Podroll]
+}
+
+type GetVoicepodsFromPodrollV1Response {
+  status: Boolean
+  message: String
+  dataVoicepods: [Post]
+  dataPodroll: Podroll
+  dataUser: User
+  responseCode: Int
+  numberOfVoicepods: Int
+  totalAudioDurationOfPodroll: Float
+  savedStatus: Int
+}
+
+type GetMySpacePodrollListResponse {
+  status: Boolean
+  message: String
+  dataPodroll: [Podroll]
+  dataUser: User
+}
+
+type GetMadeForYouPodrollListThreeAV1Response {
+  status: Boolean
+  message: String
+  data: [SubTopic]
+}
+
+type GetMadeForYouPodrollListThreeBV1ResponseData {
+  voicepods: [Post]
+  voicepodsCount: Int
+}
+
+type GetMadeForYouPodrollListThreeBV1Response {
+  status: Boolean
+  message: String
+  data: GetMadeForYouPodrollListThreeBV1ResponseData
+}
+
+type CheckIfPodrollIsDeletedResponseData {
+  title: String
+  isPrivate: Boolean
+  isDefault: Boolean
+  isDeleted: Boolean
+}
+
+type CheckIfPodrollIsDeletedResponse {
+  status: Boolean
+  message: String
+  data: CheckIfPodrollIsDeletedResponseData
+}
+
+type CreateDefaultPodrollResponseData {
+  id: String
+  title: String
+  isPrivate: Boolean
+  coverImageUrl: String
+  coverImageUrlXs: String
+  coverImageUrlS: String
+  coverImageUrlM: String
+  coverImageUrlDark: String
+  coverImageUrlXsDark: String
+  coverImageUrlSDark: String
+  coverImageUrlMDark: String
+}
+
+type CreateDefaultPodrollResponse {
+  status: Boolean
+  message: String
+  data: CreateDefaultPodrollResponseData
+  responseCode: Int
+}
+
+type CreatePodrollResponseData {
+  id: String
+  title: String
+  isPrivate: Boolean
+  coverImageUrl: String
+  coverImageUrlXs: String
+  coverImageUrlS: String
+  coverImageUrlM: String
+  coverImageUrlDark: String
+  coverImageUrlXsDark: String
+  coverImageUrlSDark: String
+  coverImageUrlMDark: String
+}
+
+type CreatePodrollResponse {
+  status: Boolean
+  message: String
+  data: CreatePodrollResponseData
+  responseCode: Int
+}
+
+type AddVoicepodToDefaultPodrollResponseData {
+  id: String
+}
+
+type AddVoicepodToDefaultPodrollResponse {
+  status: Boolean
+  message: String
+  data: AddVoicepodToDefaultPodrollResponseData
+  responseCode: Int
+}
+
+type AddVoicepodToPodrollResponseData {
+  id: String
+}
+
+type AddVoicepodToPodrollResponse {
+  status: Boolean
+  message: String
+  data: AddVoicepodToPodrollResponseData
+  responseCode: Int
+}
+
+type SaveOthersPodrollsToMyListResponseData {
+  id: String
+}
+
+type SaveOthersPodrollsToMyListResponse {
+  status: Boolean
+  message: String
+  data: SaveOthersPodrollsToMyListResponseData
+  responseCode: Int
+}
+
+type UnsaveOthersPodrollsFromMyListResponse {
+  status: Boolean
+  message: String
+  responseCode: Int
+}
+
+type RemoveVoicepodFromDefaultPodrollResponse {
+  status: Boolean
+  message: String
+  responseCode: Int
+}
+
+type RemoveVoicepodFromPodrollResponse {
+  status: Boolean
+  message: String
+  responseCode: Int
+}
+
+type DeleteAPodrollResponse {
+  status: Boolean
+  message: String
+  responseCode: Int
+}
+
+type UpdateAPodrollResponseData {
+  id: String
+  title: String
+  isPrivate: Boolean
+  coverImageUrl: String
+  coverImageUrlXs: String
+  coverImageUrlS: String
+  coverImageUrlM: String
+  coverImageUrlDark: String
+  coverImageUrlXsDark: String
+  coverImageUrlSDark: String
+  coverImageUrlMDark: String
+}
+
+type UpdateAPodrollResponse {
+  status: Boolean
+  message: String
+  data: UpdateAPodrollResponseData
+  responseCode: Int
+}
+
+type UpdatePodrollLastPlayedResponseData {
+  id: String
+}
+
+type UpdatePodrollLastPlayedResponse {
+  status: Boolean
+  message: String
+  data: UpdatePodrollLastPlayedResponseData
+  responseCode: Int
+}
+
+type AddDarkModeUrlResponseData {
+  userId: String
+  title: String
+  coverImageUrl: String
+  coverImageUrlXs: String
+  coverImageUrlS: String
+  coverImageUrlM: String
+  coverImageUrlDark: String
+  coverImageUrlXsDark: String
+  coverImageUrlSDark: String
+  coverImageUrlMDark: String
+}
+
+type AddDarkModeUrlResponse {
+  status: Boolean
+  message: String
+  data: [AddDarkModeUrlResponseData]
+}
+
+input CreateDefaultPodrollInput {
+  coverImageUrl: String!
+  coverImageUrlXs: String!
+  coverImageUrlS: String!
+  coverImageUrlM: String!
+  coverImageUrlDark: String
+  coverImageUrlXsDark: String
+  coverImageUrlSDark: String
+  coverImageUrlMDark: String
+}
+
+input CreatePodrollInput {
+  title: String!
+  isPrivate: Boolean!
+  coverImageUrl: String!
+  coverImageUrlXs: String!
+  coverImageUrlS: String!
+  coverImageUrlM: String!
+  coverImageUrlDark: String
+  coverImageUrlXsDark: String
+  coverImageUrlSDark: String
+  coverImageUrlMDark: String
+  isImageUploaded: Boolean!
+}
+
+input UpdateAPodrollInput {
+  podrollId: String!
+  title: String
+  isPrivate: Boolean!
+  coverImageUrl: String
+  coverImageUrlDark: String
+  isImageUploaded: Boolean!
+}
+
+type GetAllPrivacyPoliciesResponseData {
+  policyNumber: String
+  policyName: String
+  policyDescription: String
+}
+
+type GetAllPrivacyPoliciesResponse {
+  status: Boolean
+  message: String
+  data: [GetAllPrivacyPoliciesResponseData]
+}
+
+type preSignedData {
+  keyName: String
+  url: String
+}
+
+type preSignedResp {
+  status: Boolean
+  message: String
+  error: String
+  data: preSignedData
+}

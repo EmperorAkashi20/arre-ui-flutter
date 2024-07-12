@@ -1,0 +1,5 @@
+{
+  "java.configuration.updateBuildConfiguration": "disabled",
+  "dart.sdkPath": "/opt/homebrew/opt/dart/libexec",
+  "editor.acceptSuggestionOnEnter": "on"
+}

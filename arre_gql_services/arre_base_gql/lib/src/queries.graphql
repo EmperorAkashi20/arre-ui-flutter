@@ -1,0 +1,277 @@
+query TrendingHashtags {
+  response: getTrendingHashtagsForVP {
+    error
+    data
+    error
+    message
+  }
+}
+
+#query UserFullDetails($profileId: String) {
+#  response: publicProfileV1(profileId: $profileId) {
+#    data {
+#      ...UserShortDetailsF
+#      ...UserFullDetailsF
+#    }
+#    error
+#    message
+#    status
+#  }
+#}
+
+#query Languages {
+#  response: languages {
+#    id
+#    name
+#    message
+#    selected
+#    nameInEnglish
+#  }
+#}
+
+#mutation CreatePost($vpPost: CreatePostV2) {
+#  response: createPostV2(input: $vpPost) {
+#    status
+#    message
+#    data {
+#      id
+#    }
+#  }
+#}
+mutation DeletePost($postId: String!, $postType: Int!) {
+  response: deletePost(postId: $postId, postType: $postType) {
+    status
+    error
+    message
+  }
+}
+
+#query UserShortDetails($profileId: String) {
+#  response: publicProfileV1(profileId: $profileId) {
+#    data {
+#      ...UserShortDetailsF
+#    }
+#    error
+#    message
+#    status
+#  }
+#}
+mutation LikePost($postId: String!) {
+  response: likePost(postId: $postId) {
+    message
+    error
+    status
+  }
+}
+
+mutation UnlikePost($postId: String!) {
+  response: unLikePost(postId: $postId) {
+    message
+    error
+    status
+  }
+}
+
+query PostCommentsReplies($postId: String!, $limit: Int, $offset: Int) {
+  response: getPostReplies(postId: $postId, limit: $limit, offset: $offset) {
+    message
+    error
+    status
+    data {
+      id
+      message
+      createdAt
+      currentUserInteractions
+      replyLevel
+      secondLevelReplies {
+        id
+        message
+        createdAt
+        replyLevel
+        parentId
+        secondLevelInteractions
+        interactions {
+          heart
+        }
+        createdBy {
+          id
+          username
+          isAvatar
+          avatarUrl
+          themeUrl
+        }
+      }
+      interactions {
+        heart
+      }
+      createdBy {
+        id
+        username
+        isAvatar
+        avatarUrl
+        themeUrl
+      }
+    }
+  }
+}
+
+mutation PostVoicepodComment($input: sendPostReplyInput) {
+  sendPostReply(input: $input) {
+    message
+    status
+    error
+    data {
+      replyId
+    }
+  }
+}
+
+mutation LikePostComment(
+  $postId: String
+  $replyId: String
+  $interactionType: String = "heart"
+  $level: Int
+  $parentID: String
+) {
+  response: addPostReplyInteraction(
+    postId: $postId
+    replyId: $replyId
+    interactionType: $interactionType
+    level: $level
+    parentID: $parentID
+  ) {
+    error
+    status
+    message
+  }
+}
+mutation UnlikePostComment(
+  $postId: String
+  $replyId: String
+  $interactionType: String = "heart"
+  $level: Int
+  $parentID: String
+) {
+  response: removePostReplyInteraction(
+    postId: $postId
+    replyId: $replyId
+    interactionType: $interactionType
+    level: $level
+    parentID: $parentID
+  ) {
+    error
+    status
+    message
+  }
+}
+
+#fragment UserShortDetailsF on User {
+#  id
+#  avatarUrl
+#  isAvatar
+#  themeUrl
+#  username
+#}
+#
+#fragment UserFullDetailsF on User {
+#  id
+#  username
+#  avatarXs
+#  avatarS
+#  avatarM
+#  avatar
+#  avatarThumbnail
+#  avatarThumbnailUrl
+#  avatarUrl
+#  avatarUrlxs
+#  avatarUrls
+#  avatarUrlm
+#  isAvatar
+#  theme
+#  themeUrl
+#  gender
+#  isVerified
+#  phoneNumber
+#  showGender
+#  isSent
+#  followersCount
+#  followingCount
+#  createdAt
+#  updatedAt
+#  isDiscussionIntroSeen
+#  verificationStatus
+#  following
+#  isFollowing
+#  bio
+#  limitOfPosts
+#  twitterHandle
+#  instagramHandle
+#  typeOfParticipation
+#  firstname
+#  lastname
+#  invitedBy {
+#    id
+#    username
+#    avatarXs
+#    avatarS
+#    avatarM
+#    avatar
+#    avatarThumbnail
+#    avatarThumbnailUrl
+#    avatarUrl
+#    avatarUrlxs
+#    avatarUrls
+#    avatarUrlm
+#    isAvatar
+#    theme
+#    themeUrl
+#    gender
+#    isVerified
+#    phoneNumber
+#    showGender
+#    isSent
+#    followersCount
+#    followingCount
+#    createdAt
+#    updatedAt
+#    isDiscussionIntroSeen
+#    verificationStatus
+#    following
+#    isFollowing
+#    bio
+#    limitOfPosts
+#    twitterHandle
+#    instagramHandle
+#    typeOfParticipation
+#    firstname
+#    lastname
+#    mutuals
+#    isSuggested
+#    frame
+#    frameUrl
+#    isFrameLive
+#    isDeactivated
+#    numberOfFollowers
+#    moderationStatus
+#  }
+#  mutuals
+#  isSuggested
+#  frame
+#  frameUrl
+#  isFrameLive
+#  isDeactivated
+#  numberOfFollowers
+#  moderationStatus
+#}
+
+mutation BlockUser($blockUserId: Int) {
+  response: blockUser(blockUserId: $blockUserId) {
+    status
+    message
+    error
+    data {
+      username
+      id
+    }
+  }
+}

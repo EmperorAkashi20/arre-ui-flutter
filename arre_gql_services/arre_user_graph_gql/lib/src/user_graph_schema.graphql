@@ -1,0 +1,76 @@
+type Query {
+  getIsFollowingUser(
+    """Id of the user."""
+    userId: String!
+  ): isFollowingUserResponse
+  getListOfFollowersPaginated(
+    """Id of the user."""
+    userId: String!
+
+    """epoch timestamp of last entry (createdOn)."""
+    after: String
+  ): userRelationResponse
+  getListOfFollowingPaginated(
+    """Id of the user."""
+    userId: String!
+
+    """epoch timestamp of last entry (createdOn)."""
+    after: String
+  ): userRelationResponse
+  getUserFollowCounts(
+    """Id of the user."""
+    userId: String!
+  ): userFollowCountsResponse
+}
+
+type genericResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: String
+}
+
+type isFollowingUser {
+  isFollowingUser: Boolean!
+}
+
+type isFollowingUserResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: isFollowingUser
+}
+
+type Mutation {
+  followUser(userId: String!): genericResponse
+  unFollowUser(userId: String!): genericResponse
+}
+
+type user {
+  userId: String!
+  createdOn: String!
+}
+
+type userFollowCount {
+  userId: String!
+  numberOfFollowers: Int!
+  numberOfFollowing: Int!
+}
+
+type userFollowCountsResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: userFollowCount
+}
+
+type userRelationResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: [user!]!
+}

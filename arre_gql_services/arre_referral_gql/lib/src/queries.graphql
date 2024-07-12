@@ -1,0 +1,36 @@
+query UserInvite($userId: String) {
+  response: UserInvite(userId: $userId) {
+    error
+    message
+    statusCode
+    errorCodeForClient
+    data {
+      uniqueDeepLink
+      numberOfInvitesLeft
+      isInviteRequested
+    }
+  }
+}
+
+query InvitedUsers($userId: String, $after: String) {
+  response: InvitedUsers(userId: $userId, after: $after) {
+    error
+    message
+    statusCode
+    errorCodeForClient
+    data {
+      inviteeUserId
+      createdOn
+    }
+  }
+}
+
+mutation RequestMoreInvites {
+  response: requestMoreInvites {
+    error
+    message
+    statusCode
+    errorCodeForClient
+    data
+  }
+}

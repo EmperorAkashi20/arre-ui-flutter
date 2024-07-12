@@ -1,0 +1,350 @@
+type BackgroundMusic {
+    id: String!
+    name: String!
+    iconUrl: String!
+    musicUrl: String!
+    filename: String!
+    order: Int!
+}
+
+type BackgroundMusicResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: [BackgroundMusic!]!
+}
+
+"""A custom scalar that handles big integers"""
+scalar BigInt
+
+type CommentsReplies {
+    replyId: String!
+    commentId: String!
+    postId: String!
+    userId: String!
+    body: String!
+    likeCount: Int!
+    status: PostStatus!
+    createdAt: BigInt!
+    updatedAt: BigInt!
+}
+
+type CreateVoicePodResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: Post
+}
+
+type GenericResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: String
+}
+
+type GetCommentRepliesResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: RepliesPaginatedResponse
+}
+
+type GetUsersVoicepodsResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: VoicepodsPaginatedResponse
+}
+
+type GetVoicepodCommentsResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: VPCommentsPaginatedResponse
+}
+
+type GetVoicepodDetailsResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: Post
+}
+
+type Insertables {
+    id: String!
+    name: String!
+    iconUrl: String!
+    musicUrl: String!
+    filename: String!
+    order: Int!
+}
+
+type InsertablesResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: [Insertables!]!
+}
+
+type IsEntityLiked {
+    isLiked: Boolean!
+}
+
+type IsUserCommentedOnVP {
+    isComment: Boolean!
+}
+
+type IsUserCommentedOnVPResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: IsUserCommentedOnVP
+}
+
+type IsUserLikedReplyOrCommentResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: IsEntityLiked
+}
+
+type IsUserLikedVP {
+    isLiked: Boolean!
+}
+
+type IsUserLikedVPResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: IsUserLikedVP
+}
+
+type LanguageResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: [Languages!]!
+}
+
+type Languages {
+    name: String!
+    nameInEnglish: String!
+}
+
+type Pitch {
+    id: String!
+    name: String!
+    iconUrl: String!
+    ffmpegCommand: String!
+    order: Int!
+}
+
+type PitchResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: [Pitch!]!
+}
+
+type Post {
+    userId: String!
+    postId: String!
+    title: String!
+
+    """
+    postUrl will be used to store the relative url of the post which is shareable.
+    It will usually be a deep link.
+    """
+    postUrl: String!
+    visibility: PostVisibility!
+    audioMediaFiles: [String!]!
+    videoMediaFiles: [String!]!
+    imageMediaFiles: [String!]!
+    language: String!
+
+    """
+    Insertables are audio clips that can be inserted while create a voice pod on the platform.
+    """
+    insertables: [String!]!
+    bgMusic: String
+    pitch: String
+
+    """value must be without '#'"""
+    hashtagsAddedByUser: [String!]!
+
+    """
+    Difference b/w hashtagsAddedByUser and hashtagIds is that hashtagIds is smallcase
+    """
+    hashtagIds: [String!]!
+    playCount: Int!
+    likeCount: Int!
+    commentCount: Int!
+    contentQualityScore: Int!
+    engagementScore: Int!
+    userPromotionScore: Int!
+    internalTags: [String!]!
+    numberOfReports: Int!
+    postStatus: PostStatus!
+    createdAt: BigInt!
+    updatedAt: BigInt!
+}
+
+type PostCommentResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: VoicepodComments
+}
+
+type PostReplyResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: CommentsReplies
+}
+
+enum PostStatus {
+    published
+    unpublished
+}
+
+enum PostVisibility {
+    private
+    public
+    womenOnly
+}
+
+type RepliesPaginatedResponse {
+    lastEvaluatedKey: lastEvaluatedKeyForReplyCommentsResponse
+    replies: [CommentsReplies]
+}
+
+type ToggleCommentReplyLike {
+    likeId: String!
+}
+
+type ToggleCommentReplyLikeResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: ToggleCommentReplyLike
+}
+
+type ToggleVoicepodLike {
+    vpLikeId: String
+}
+
+type ToggleVoicepodLikeResponse {
+    error: Boolean!
+    message: String!
+    statusCode: Int!
+    errorCodeForClient: String!
+    data: ToggleVoicepodLike
+}
+
+type VPCommentsPaginatedResponse {
+    lastEvaluatedKey: lastEvaluatedKeyForVoicepodCommentsResponse
+    comments: [VoicepodComments]
+}
+
+type VoicepodComments {
+    commentId: String!
+    postId: String!
+    userId: String!
+    body: String!
+    likeCount: Int!
+    replyCount: Int!
+    status: PostStatus!
+    createdAt: BigInt!
+    updatedAt: BigInt!
+}
+
+type VoicepodsPaginatedResponse {
+    lastEvaluatedKey: lastEvaluatedKeyForVoicepodsResponse
+    voicepods: [String!]!
+}
+
+input lastEvaluatedKeyForReplyComments {
+    createdAt: BigInt
+    commentId: String
+    replyId: String
+    status: String
+}
+
+type lastEvaluatedKeyForReplyCommentsResponse {
+    createdAt: BigInt
+    commentId: String
+    replyId: String
+    status: String
+}
+
+input lastEvaluatedKeyForVoicepodComments {
+    createdAt: BigInt
+    postId: String
+    commentId: String
+    status: String
+}
+
+type lastEvaluatedKeyForVoicepodCommentsResponse {
+    createdAt: BigInt
+    postId: String
+    commentId: String
+    status: String
+}
+
+input lastEvaluatedKeyForVoicepods {
+    postId: String
+    userId: String
+    createdAt: BigInt
+}
+
+type lastEvaluatedKeyForVoicepodsResponse {
+    postId: String
+    userId: String
+    createdAt: BigInt
+}
+
+type Mutation {
+    createVoicepod(title: String!, visibility: PostVisibility, audioMediaFiles: [String!]!, videoMediaFiles: [String!], imageMediaFiles: [String!], language: String, insertables: [String!], bgMusic: String, pitch: String, hashtags: [String!], duration: Int!): CreateVoicePodResponse!
+    deleteVP(postId: String!): GenericResponse!
+    recoverVP(postId: String!): GenericResponse!
+    postComment(postId: String!, body: String!): PostCommentResponse
+    postReply(postId: String!, body: String!, commentId: String!, commentCreatedAt: BigInt!): PostReplyResponse
+    toggleVoicepodLike(postId: String!, isLiked: Boolean!): ToggleVoicepodLikeResponse
+    toggleCommentReplyLike(entityId: String!, entityType: String!, entityCreatedAt: BigInt!, isLiked: Boolean!): ToggleCommentReplyLikeResponse
+    deleteCommentOrReply(entityId: String!, entityType: String!, postId: String!, createdAt: BigInt!): GenericResponse!
+    markPlayed(postId: String!, duration: Int!): GenericResponse
+    markImpression(postId: String!): GenericResponse
+    reportVoicepod(postId: String!, type: [String!], reason: String!, evidanceId: [String!], audioId: String!): GenericResponse
+}
+
+type Query {
+    getVoicepodDetails(postId: String!): GetVoicepodDetailsResponse
+    getVoicepodComments(postId: String!, lastEvaluatedKey: lastEvaluatedKeyForVoicepodComments): GetVoicepodCommentsResponse
+    getCommentReplies(commentId: String!, lastEvaluatedKey: lastEvaluatedKeyForReplyComments): GetCommentRepliesResponse
+    getVoicepodListByUserId(userId: String, lastEvaluatedKey: lastEvaluatedKeyForVoicepods): GetUsersVoicepodsResponse
+    getBackgroundMusic: BackgroundMusicResponse
+    getInsertables: InsertablesResponse
+    getPitch: PitchResponse
+    getLanguages: LanguageResponse
+    hasUserLikedVP(postId: String!): IsUserLikedVPResponse!
+    hasUserLikedReplyOrComment(entityType: String!, entityId: String!): IsUserLikedReplyOrCommentResponse
+    hasUserCommentedOnVP(postId: String!): IsUserCommentedOnVPResponse!
+}

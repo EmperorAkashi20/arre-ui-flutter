@@ -1,0 +1,19 @@
+targets:
+  $default:
+    builders:
+      ferry_generator|graphql_builder:
+        enabled: true
+        options:
+          type_overrides:
+            BigInt:
+              name: String
+          schema: arre_post_manage_gql|lib/src/post_manage_schema.graphql
+      ferry_generator|serializer_builder:
+        enabled: true
+        options:
+          type_overrides:
+            BigInt:
+              name: String
+          schema: arre_post_manage_gql|lib/src/post_manage_schema.graphql
+
+#RUN dart run build_runner build

@@ -1,0 +1,79 @@
+query GetIsFollowingUser($userId: String!) {
+    response: getIsFollowingUser(userId: $userId) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            isFollowingUser
+        }
+    }
+}
+
+query GetListOfFollowersPaginated($userId: String!, $after: String) {
+    response: getListOfFollowersPaginated(userId: $userId, after: $after) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            ...UserFollowRelation
+        }
+    }
+}
+
+query GetListOfFollowingPaginated($userId: String!, $after: String) {
+    response: getListOfFollowingPaginated(userId: $userId, after: $after) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            ...UserFollowRelation
+        }
+    }
+}
+
+query GetUserFollowCounts($userId: String!) {
+    response: getUserFollowCounts(userId: $userId) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data {
+            ...UserFollowCounts
+        }
+    }
+}
+
+mutation FollowUser($userId: String!) {
+    response: followUser(userId: $userId) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data
+    }
+}
+
+mutation UnFollowUser($userId: String!) {
+    response: unFollowUser(userId: $userId) {
+        error
+        message
+        statusCode
+        errorCodeForClient
+        data
+    }
+}
+
+
+fragment UserFollowRelation on user {
+    userId
+    createdOn
+}
+
+fragment  UserFollowCounts on userFollowCount{
+    userId
+    numberOfFollowers
+    numberOfFollowing
+}

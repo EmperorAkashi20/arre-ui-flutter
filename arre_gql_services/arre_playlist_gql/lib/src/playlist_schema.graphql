@@ -1,0 +1,80 @@
+type Query {
+  getAllPlaylists(
+    """Id of the user."""
+    userId: String!
+    privacy: privacyType!
+
+    """createdOn timestamp of last entry for paginating over results."""
+    after: String
+  ): playlistsResponse
+  getPlaylistDetails(
+    """Id of the playlist."""
+    playlistId: String!
+  ): playlistDetailsResponse
+}
+
+type genericResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: String
+}
+
+type Mutation {
+  createPlaylist(title: String!, privacy: String!, coverImage: String): playlistDetailsResponse
+  editPlaylist(playlistId: String!, title: String, privacy: String, coverImage: String): playlistDetailsResponse
+  deletePlaylist(playlistId: String!): genericResponse
+  addPostToPlayList(playlistId: String!, voicePodId: String!): playlistDetailsResponse
+  addPostToMySaved(voicePodId: String!): playlistDetailsResponse
+  removePostFromPlaylist(playlistId: String!, voicePodId: String!): playlistDetailsResponse
+}
+
+type playlist {
+  playlistId: String!
+  userId: String!
+  title: String!
+  privacy: privacyType!
+  listOfPosts: [String!]!
+  creatorOfPlaylist: String!
+  createdOn: String!
+  coverImage: String
+  shareLink: String!
+  totalDuration: Int!
+  numberOfPosts: Int!
+}
+
+type playlistDetailsResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: playlist
+}
+
+type playlistsResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: [playlist]
+}
+
+enum privacyInputType {
+  public
+  private
+}
+
+enum privacyType {
+  public
+  private
+  both
+}
+
+type searchPlaylistResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: playlist
+}

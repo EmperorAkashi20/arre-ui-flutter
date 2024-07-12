@@ -1,0 +1,235 @@
+query GetLanguages{
+    response:getLanguages {
+        message
+        error
+        statusCode
+        errorCodeForClient
+        data{
+            ...Language
+        }
+    }
+}
+
+query BgMusic{
+    response:getBackgroundMusic {
+        message
+        error
+        statusCode
+        errorCodeForClient
+        data {
+            id
+            name
+            iconUrl
+            musicUrl
+            filename
+        }
+    }
+}
+
+query AudioInsertables{
+    response: getInsertables {
+        message
+        error
+        statusCode
+        errorCodeForClient
+        data {
+            id
+            name
+            iconUrl
+            musicUrl
+            filename
+        }
+    }
+}
+
+query VoiceEffects{
+    response:getPitch {
+        message
+        error
+        data {
+            id
+            name
+            ffmpegCommand
+            iconUrl
+        }
+    }
+}
+
+query UserVoicepods($userId:String!, $lastEvaluatedKey: lastEvaluatedKeyForVoicepods){
+    response:getVoicepodListByUserId(userId: $userId, lastEvaluatedKey: $lastEvaluatedKey){
+        message
+        error
+        errorCodeForClient
+        statusCode
+        data{
+            voicepods
+            lastEvaluatedKey {
+                createdAt
+                postId
+                userId
+            }
+        }
+    }
+}
+mutation MarkAsViewed($postId:String!){
+    response: markImpression(postId: $postId){
+        message
+        error
+        errorCodeForClient
+        statusCode
+        data
+    }
+}
+
+mutation MarkAsPlayed($postId:String!,$duration:Int!){
+    response: markPlayed(postId: $postId,duration: $duration){
+        message
+        error
+        errorCodeForClient
+        statusCode
+        data
+    }
+}
+
+mutation CreateVoicepod(
+    $title: String!,
+    $visibility: PostVisibility,
+    $audioMediaFiles: [String!]!,
+    $videoMediaFiles: [String!],
+    $imageMediaFiles: [String!],
+    $language: String,
+    $insertables: [String!],
+    $bgMusic: String,
+    $pitch: String,
+    $hashtags: [String!],
+    $duration: Int!
+){
+    response:createVoicepod(
+        title: $title,
+        visibility: $visibility,
+        audioMediaFiles: $audioMediaFiles,
+        videoMediaFiles: $videoMediaFiles,
+        imageMediaFiles: $imageMediaFiles,
+        language: $language,
+        insertables: $insertables,
+        bgMusic: $bgMusic,
+        pitch: $pitch,
+        hashtags: $hashtags,
+        duration: $duration,
+    ){
+        data {
+            ...PostDetails
+        }
+        statusCode
+        errorCodeForClient
+        error
+        message
+    }
+}
+
+query GetVoicepodDetails($postId: String!){
+    response:getVoicepodDetails(postId: $postId){
+        data {
+            ...PostDetails
+        }
+        statusCode
+        errorCodeForClient
+        error
+        message
+
+    }
+}
+
+mutation DeleteVoicepod($postId: String!){
+    response:deleteVP(postId: $postId){
+        data
+        statusCode
+        errorCodeForClient
+        error
+        message
+    }
+}
+
+mutation PostComment($postId:String!, $comment: String!){
+    response: postComment(postId: $postId,body: $comment){
+        data {
+            ...VPComment
+        }
+        statusCode
+        errorCodeForClient
+        error
+        message
+    }
+}
+
+
+
+mutation PostCommentReply($postId: String!, $reply: String!, $commentId: String!, $commentCreatedAt: BigInt!){
+    response:postReply(body: $reply,postId: $postId,commentCreatedAt: $commentCreatedAt,commentId: $commentId){
+        data {
+            ...VPCommentReply
+        }
+        statusCode
+        errorCodeForClient
+        error
+        message
+    }
+}
+
+
+
+fragment PostDetails on Post{
+    userId
+    postId
+    title
+    postUrl
+    visibility
+    audioMediaFiles
+    videoMediaFiles
+    imageMediaFiles
+    #    language
+    #    insertables
+    #    bgMusic
+    #    pitch
+    #    hashtagsAddedByUser
+    #    hashtagIds
+    playCount
+    likeCount
+    commentCount
+    #    contentQualityScore
+    #    engagementScore
+    #    userPromotionScore
+    #    internalTags
+    #    numberOfReports
+    postStatus
+    createdAt
+    updatedAt
+}
+
+fragment  VPComment on VoicepodComments{
+    commentId
+    postId
+    userId
+    body
+    likeCount
+    replyCount
+    status
+    createdAt
+    updatedAt
+}
+fragment  VPCommentReply on CommentsReplies{
+    replyId
+    commentId
+    postId
+    userId
+    body
+    likeCount
+    status
+    createdAt
+    updatedAt
+}
+
+fragment Language on Languages{
+    nameInEnglish
+    name
+}

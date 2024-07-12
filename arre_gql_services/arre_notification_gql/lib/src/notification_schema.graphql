@@ -1,0 +1,89 @@
+type Notification {
+  notificationId: String
+  actionType: String
+  senderId: String
+  receiverId: String
+  entityType: String
+  entityId: String
+  notificationTitle: String
+  notificationBody: String
+  ctaText: String
+  mediaId: String
+  redirectUrl: String
+  notificationPersistenceType: String
+  createdOn: String
+  seenByUser: Boolean
+}
+
+type NotificationResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: [Notification]
+}
+
+type genericResponse {
+  error: Boolean
+  message: String
+  statusCode: Int
+  errorCodeForClient: String
+  data: String
+}
+
+input inputDeviceInfo {
+  fcmToken: String
+  operatingSystem: String
+  operatingSystemVersion: String
+  modelName: String
+  manufacturer: String
+  deviceName: String
+  deviceUniqueId: String
+  imeiNumber: String
+}
+
+enum lastAppLandingSourceType {
+  direct
+  notification
+  inviteLink
+  deepLink
+}
+
+type Mutation {
+  markNotificationAsSeen(
+    """
+    csv of all the notification ids that were just seen by user (maximum 50 ids)
+    """
+    notificationIds: String
+
+    """TransactionalNotification"""
+    schemaName: String
+  ): genericResponse
+  saveUserDeviceInformation(
+    """The id of the user"""
+    userId: String
+    inputDeviceInfo: inputDeviceInfo
+    lastAppLandingSource: lastAppLandingSourceType
+    lastAppLandingLink: String
+    appVersion: String
+    buildNumber: String
+  ): genericResponse
+}
+
+type Query {
+  getNotificationsList(
+    """
+    creation timestamp of last notification in previous list - for pagination purpose
+    """
+    after: String
+
+    """TransactionalNotification"""
+    schemaName: String
+  ): NotificationResponse
+}
+
+enum schemaName {
+  TransactionalNotification
+  SocialNotification
+  CMSNotification
+}

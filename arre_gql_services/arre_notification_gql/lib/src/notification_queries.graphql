@@ -1,0 +1,61 @@
+query Notification($after: String, $schemaName: String) {
+  response: getNotificationsList(after: $after, schemaName: $schemaName) {
+    error
+    message
+    statusCode
+    errorCodeForClient
+    data {
+      notificationId
+      actionType
+      senderId
+      receiverId
+      entityType
+      entityId
+      notificationTitle
+      notificationBody
+      ctaText
+      mediaId
+      redirectUrl
+      notificationPersistenceType
+      createdOn
+      seenByUser
+    }
+  }
+}
+
+mutation MarkNotificationAsSeen($notificationIds: String, $schemaName: String) {
+  response: markNotificationAsSeen(
+    notificationIds: $notificationIds
+    schemaName: $schemaName
+  ) {
+    error
+    message
+    statusCode
+    errorCodeForClient
+    data
+  }
+}
+
+mutation SaveUserDeviceInformation(
+  $userId: String,
+  $inputDeviceInfo: inputDeviceInfo,
+  $lastAppLandingSource: lastAppLandingSourceType,
+  $lastAppLandingLink: String,
+  $appVersion: String,
+  $buildNumber: String
+) {
+  response: saveUserDeviceInformation(
+    userId: $userId,
+    inputDeviceInfo: $inputDeviceInfo,
+    lastAppLandingSource: $lastAppLandingSource,
+    lastAppLandingLink: $lastAppLandingLink,
+    appVersion: $appVersion,
+    buildNumber: $buildNumber
+  ) {
+    error
+    message
+    statusCode
+    errorCodeForClient
+    data
+  }
+}

@@ -1,0 +1,41 @@
+query ListTopCreators {
+  response: listTopCreators {
+    error
+    message
+    statusCode
+    errorCodeForClient
+    data {
+      userId
+      mediaId
+    }
+  }
+}
+
+query ListTopHashtags($rankGreaterThan: Int!) {
+  response: listTopHashtags(rankGreaterThan: $rankGreaterThan) {
+    error
+    message
+    statusCode
+    errorCodeForClient
+    data {
+      hashTagName
+      hashTagUniqueIdentifier
+      hashTagDescription
+      mediaId
+    }
+  }
+}
+
+query ListTopPostsByHashTagId($hashTagUniqueIdentifier: String!) {
+  response: listTopPostsByHashTagId(
+    hashTagUniqueIdentifier: $hashTagUniqueIdentifier
+  ) {
+    error
+    message
+    statusCode
+    errorCodeForClient
+    data {
+      voicepodId
+    }
+  }
+}
